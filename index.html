@@ -13,8 +13,8 @@ html,body{width:100%;min-height:100vh;font-family:'Poppins',sans-serif;backgroun
 .hdr-in{max-width:640px;margin:0 auto;padding:14px 20px 0;text-align:center}
 .ch-n{font-family:'Grandstander',cursive;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.65)}
 .ch-t{font-family:'Grandstander',cursive;font-size:clamp(18px,5vw,26px);font-weight:900;color:#fff;line-height:1.2;margin:2px 0 10px;text-shadow:0 2px 8px rgba(0,0,0,.1)}
-.tabs{display:flex;gap:4px;max-width:280px;margin:0 auto;background:rgba(0,0,0,.1);border-radius:14px 14px 0 0;padding:4px 4px 0}
-.tab{flex:1;padding:9px 0;text-align:center;font-family:'Grandstander',cursive;font-size:14px;font-weight:800;cursor:pointer;border-radius:12px 12px 0 0;color:rgba(255,255,255,.6);transition:.2s;user-select:none}
+.tabs{display:flex;gap:4px;max-width:340px;margin:0 auto;background:rgba(0,0,0,.1);border-radius:14px 14px 0 0;padding:4px 4px 0}
+.tab{flex:1;padding:9px 0;text-align:center;font-family:'Grandstander',cursive;font-size:13px;font-weight:800;cursor:pointer;border-radius:12px 12px 0 0;color:rgba(255,255,255,.6);transition:.2s;user-select:none}
 .tab.on{background:var(--bg);color:var(--ac)}
 .tab:not(.on):hover{color:#fff;background:rgba(255,255,255,.08)}
 .page{max-width:620px;margin:0 auto;padding:14px 14px 60px}
@@ -22,23 +22,9 @@ html,body{width:100%;min-height:100vh;font-family:'Poppins',sans-serif;backgroun
 .card{background:var(--card);border-radius:var(--r);padding:20px 18px;box-shadow:0 3px 16px rgba(0,0,0,.06);position:relative;overflow:hidden}
 .cb{position:absolute;top:0;left:0;bottom:0;width:5px;border-radius:var(--r) 0 0 var(--r);background:var(--ac)}
 .ct{font-family:'Grandstander',cursive;font-size:15px;font-weight:800;padding-left:14px;margin-bottom:3px;line-height:1.3}
-.cs{font-size:12px;color:var(--ink2);padding-left:14px;margin-bottom:14px;line-height:1.6}
-/* stepper */
-.cr{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.cg{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.03);border-radius:12px;padding:8px 12px;border:1.5px solid rgba(0,0,0,.06)}
-.cl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;min-width:48px}
-.sb{width:34px;height:34px;border-radius:50%;border:none;font-size:18px;font-weight:900;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.12s;box-shadow:0 2px 6px rgba(0,0,0,.15)}
-.sb:active{transform:scale(.88)}
-.sv{font-family:'Grandstander',cursive;font-size:28px;font-weight:900;min-width:28px;text-align:center}
-/* blocks */
-.bx{background:rgba(0,0,0,.02);border-radius:14px;border:1.5px solid rgba(0,0,0,.06);padding:12px;min-height:60px;display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-bottom:14px}
-.flat{display:grid;grid-template-columns:repeat(10,8px);gap:1px}.flat-c{width:8px;height:8px;border-radius:1px;opacity:.8}
-.rod{display:flex;flex-direction:column;gap:1px}.rod-c{width:10px;height:10px;border-radius:1px;opacity:.8}
-.units{display:flex;flex-wrap:wrap;gap:2px;max-width:58px;align-self:flex-end}.unit-c{width:10px;height:10px;border-radius:2px;opacity:.8}
-.sep{width:1px;background:#D1D5DB;align-self:stretch;margin:0 3px}
-/* options */
+.cs{font-size:12px;color:var(--ink2);padding-left:14px;margin-bottom:16px;line-height:1.6}
 .opts{display:flex;gap:8px;flex-wrap:wrap}
-.opt{font-family:'Grandstander',cursive;font-size:22px;font-weight:800;min-width:72px;height:54px;border-radius:16px;border:2.5px solid rgba(0,0,0,.08);background:#fff;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:.15s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.opt{font-family:'Grandstander',cursive;font-size:20px;font-weight:800;min-width:68px;height:52px;border-radius:14px;border:2.5px solid rgba(0,0,0,.08);background:#fff;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:.15s;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:0 10px}
 .opt:hover{border-color:var(--ac);transform:translateY(-2px)}
 .opt.ok{background:#DCFCE7;border-color:var(--ok);color:#15803D;animation:pop .3s}
 .opt.no{background:#FEE2E2;border-color:var(--no);color:var(--no);animation:shk .35s}
@@ -52,18 +38,7 @@ html,body{width:100%;min-height:100vh;font-family:'Poppins',sans-serif;backgroun
 .btn-p{background:var(--ac);color:#fff}
 .btn-g{background:#fff;color:var(--ink2);border:1.5px solid rgba(0,0,0,.1)}
 .btn-g:hover{border-color:var(--ac);color:var(--ac)}
-.chal{background:rgba(0,0,0,.02);border-radius:16px;padding:14px;border:1.5px dashed rgba(0,0,0,.1);margin-top:10px}
-.chal-q{font-family:'Grandstander',cursive;font-size:14px;font-weight:800;margin-bottom:10px}
-.chal-q b{color:var(--ac);font-size:22px}
-canvas{display:block;border-radius:10px}
-/* drag & tap shared */
-.tappable{cursor:pointer;user-select:none;transition:transform .15s}
-.tappable:hover{transform:scale(1.08)}
-.tappable:active{transform:scale(.92)}
-/* misc */
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.pill{display:inline-block;font-family:'Grandstander',cursive;font-size:14px;font-weight:800;padding:6px 18px;border-radius:30px}
-.big{font-family:'Grandstander',cursive;font-weight:900;line-height:1;text-align:center}
 </style>
 </head>
 <body>
@@ -71,68 +46,293 @@ canvas{display:block;border-radius:10px}
   <div class="ch-n">Chapter 4</div>
   <div class="ch-t">Shapes and Patterns</div>
   <div class="tabs">
-    <div class="tab on" onclick="sw('learn')">Learn</div>
+    <div class="tab on" onclick="sw('learn')">Explore</div>
+    <div class="tab" onclick="sw('build')">Build</div>
     <div class="tab" onclick="sw('practice')">Practice</div>
   </div>
 </div></div>
 <div class="page">
 
+<!-- ══════════ EXPLORE ══════════ -->
 <div class="pnl on" id="p-learn">
   <div class="card"><div class="cb"></div>
     <div class="ct">Tap a shape to explore it</div>
-    <div class="cs">Find out the name, sides, corners, and a fun fact.</div>
+    <div class="cs">See how many sides and corners each shape has. Then rotate it!</div>
     <div id="sGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px"></div>
-    <div id="info" style="background:rgba(0,0,0,.02);border-radius:14px;padding:14px 16px;border:1.5px solid rgba(0,0,0,.06);min-height:60px">
-      <div style="font-size:13px;font-weight:600;color:var(--ink2)">Tap any shape above.</div>
+    <div id="shapeInfo" style="background:rgba(0,0,0,.02);border-radius:14px;padding:16px;border:1.5px solid rgba(0,0,0,.06)">
+      <div style="font-size:13px;font-weight:600;color:var(--ink2)">Tap a shape above to explore it.</div>
+    </div>
+    <div id="spinArea" style="display:none;margin-top:12px;text-align:center">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-bottom:8px">Rotate it — does it look different?</div>
+      <div id="spinSVG" style="display:flex;justify-content:center;margin-bottom:10px"></div>
+      <div class="row" style="justify-content:center">
+        <button class="btn btn-g" onclick="spin(-15)">↺ Left</button>
+        <button class="btn btn-g" onclick="spin(15)">↻ Right</button>
+        <button class="btn btn-g" onclick="spin(0)">Reset</button>
+      </div>
+      <div style="font-size:12px;font-weight:700;color:var(--ink2);margin-top:8px" id="spinNote"></div>
     </div>
   </div>
 </div>
+
+<!-- ══════════ BUILD ══════════ -->
+<div class="pnl" id="p-build">
+  <div class="card"><div class="cb"></div>
+    <div class="ct">Build a picture with shapes!</div>
+    <div class="cs">Can you make a house? A rocket? A tree? Pick a shape, pick a colour, then draw on the slate. Have fun!</div>
+
+    <!-- Encouragement prompts -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="prompts"></div>
+
+    <!-- Shape picker -->
+    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-bottom:6px">Shape</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="drawPicker"></div>
+
+    <!-- Colour picker -->
+    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-bottom:6px">Colour</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="colorPicker"></div>
+
+    <!-- Canvas -->
+    <div style="position:relative;background:#F8F9FF;border:2px solid #E0E7FF;border-radius:16px;overflow:hidden;margin-bottom:10px;cursor:crosshair;touch-action:none">
+      <canvas id="drawSlate" width="580" height="320" style="width:100%;height:auto;display:block;touch-action:none"></canvas>
+      <div id="slateProp" style="position:absolute;bottom:10px;left:12px;background:rgba(255,255,255,.92);border-radius:10px;padding:6px 12px;font-family:Grandstander,cursive;font-size:13px;font-weight:800;color:var(--ac);backdrop-filter:blur(4px);display:none;pointer-events:none"></div>
+    </div>
+
+    <div class="row">
+      <button class="btn btn-g" onclick="undoLast()">← Undo</button>
+      <button class="btn btn-g" onclick="clearSlate()">Clear slate ↻</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PRACTICE ══════════ -->
 <div class="pnl" id="p-practice">
   <div class="card"><div class="cb"></div>
-    <div class="ct">How many sides?</div>
-    <div class="cs">Count the sides of this shape.</div>
-    <div style="display:flex;justify-content:center;margin-bottom:14px" id="sDisp"></div>
-    <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:12px" id="sQ"></div>
-    <div class="opts" id="sO"></div>
+    <div class="ct">Name the shape</div>
+    <div class="cs">Look at the shape and pick the correct name.</div>
+    <div style="display:flex;justify-content:center;margin-bottom:14px" id="sQ"></div>
+    <div class="opts" id="sO" style="flex-wrap:wrap"></div>
     <div class="fb" id="sF"></div>
     <button class="nbtn" onclick="nwSQ()">Next →</button>
   </div>
   <div class="card"><div class="cb"></div>
     <div class="ct">What comes next?</div>
-    <div class="cs">Look at the repeating pattern. Pick what goes in place of ❓.</div>
-    <div style="font-size:32px;letter-spacing:5px;margin-bottom:16px;min-height:42px;word-break:break-all" id="patS"></div>
+    <div class="cs">Study the pattern. Pick what replaces ❓.</div>
+    <div style="font-size:30px;letter-spacing:6px;min-height:44px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:4px;align-items:center" id="patSeq"></div>
     <div class="opts" id="patO"></div>
     <div class="fb" id="patF"></div>
     <button class="nbtn" onclick="nwPQ()">Next →</button>
   </div>
 </div>
 
-</div>
+</div><!-- /page -->
+
 <script>
-function sw(n){document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on',t.textContent.toLowerCase()===n)});document.querySelectorAll('.pnl').forEach(function(p){var a=p.id==='p-'+n;p.classList.toggle('on',a);p.style.display=a?'flex':'none'})}
-document.getElementById('p-practice').style.display='none';
-function pool4(ans,lo,hi){var s=new Set([ans]);var i=0;while(s.size<4&&i<50){i++;var w=ans+Math.round(Math.random()*8-4);if(w>=lo&&w<=hi&&w!==ans)s.add(w)}return[...s].sort(function(){return Math.random()-.5})}
-function mkOpts(cid,items,correct,fid){var c=document.getElementById(cid);c.innerHTML='';items.forEach(function(n){var b=document.createElement('button');b.className='opt';b.textContent=n;b.onclick=function(){c.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById(fid);if(String(n)===String(correct)){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}else{b.classList.add('no');fb.textContent='The answer is '+correct+'.';fb.style.color='var(--no)';c.querySelectorAll('.opt').forEach(function(x){if(String(x.textContent)===String(correct))x.classList.add('ok')})}};c.appendChild(b)})}
+/* ── TAB SWITCH (3 tabs) ── */
+var TAB_NAMES = {'learn':'Explore','build':'Build','practice':'Practice'};
+function sw(n){
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.classList.toggle('on', t.textContent === TAB_NAMES[n]);
+  });
+  ['learn','build','practice'].forEach(function(id){
+    var p = document.getElementById('p-' + id);
+    var on = id === n;
+    p.classList.toggle('on', on);
+    p.style.display = on ? 'flex' : 'none';
+  });
+}
+document.getElementById('p-build').style.display = 'none';
+document.getElementById('p-practice').style.display = 'none';
 
+/* ── SHAPE DATA ── */
 var SH=[
-  {n:'Circle',s:0,c:0,svg:'<circle cx="40" cy="40" r="34" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2.5"/>',f:'No sides, no corners — it rolls!'},
-  {n:'Triangle',s:3,c:3,svg:'<polygon points="40,6 72,70 8,70" fill="#FEF9C3" stroke="#CA8A04" stroke-width="2.5"/>',f:'3 sides, 3 corners. The strongest shape!'},
-  {n:'Square',s:4,c:4,svg:'<rect x="8" y="8" width="64" height="64" rx="2" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/>',f:'4 equal sides and 4 equal corners.'},
-  {n:'Rectangle',s:4,c:4,svg:'<rect x="4" y="22" width="72" height="36" rx="2" fill="#F3E8FF" stroke="#9333EA" stroke-width="2.5"/>',f:'4 sides — 2 long, 2 short.'},
-  {n:'Pentagon',s:5,c:5,svg:'<polygon points="40,6 68,26 58,60 22,60 12,26" fill="#FFE4E6" stroke="#E11D48" stroke-width="2.5"/>',f:'Penta means five!'},
-  {n:'Hexagon',s:6,c:6,svg:'<polygon points="40,6 64,20 64,54 40,68 16,54 16,20" fill="#FFEDD5" stroke="#EA580C" stroke-width="2.5"/>',f:'Hex means six. Bees build hexagons!'}
+  {n:'Circle',sides:0,corners:0,sym:'infinite',color:'#3B82F6',
+    svg:'<circle cx="52" cy="52" r="44" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2.5"/>',
+    fact:'No sides, no corners. Rolls in any direction!'},
+  {n:'Triangle',sides:3,corners:3,sym:'3 lines',color:'#CA8A04',
+    svg:'<polygon points="52,8 92,88 12,88" fill="#FEF9C3" stroke="#CA8A04" stroke-width="2.5"/>',
+    fact:'3 sides, 3 corners. The strongest shape in nature!'},
+  {n:'Square',sides:4,corners:4,sym:'4 lines',color:'#16A34A',
+    svg:'<rect x="10" y="10" width="84" height="84" rx="3" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/>',
+    fact:'4 equal sides, 4 right-angle corners.'},
+  {n:'Rectangle',sides:4,corners:4,sym:'2 lines',color:'#9333EA',
+    svg:'<rect x="6" y="26" width="92" height="52" rx="3" fill="#F3E8FF" stroke="#9333EA" stroke-width="2.5"/>',
+    fact:'2 long sides, 2 short sides. 4 right-angle corners.'},
+  {n:'Pentagon',sides:5,corners:5,sym:'5 lines',color:'#E11D48',
+    svg:'<polygon points="52,8 88,34 76,76 28,76 16,34" fill="#FFE4E6" stroke="#E11D48" stroke-width="2.5"/>',
+    fact:'"Penta" means 5 in Greek!'},
+  {n:'Hexagon',sides:6,corners:6,sym:'6 lines',color:'#EA580C',
+    svg:'<polygon points="52,8 88,30 88,74 52,96 16,74 16,30" fill="#FFEDD5" stroke="#EA580C" stroke-width="2.5"/>',
+    fact:'"Hex" means 6. Honeybees build hexagons!'}
 ];
-function bldG(){var g=document.getElementById('sGrid');SH.forEach(function(s,i){var d=document.createElement('div');d.style.cssText='background:rgba(0,0,0,.02);border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer;border:2px solid transparent;transition:.18s;user-select:none';d.innerHTML='<svg viewBox="0 0 80 76" width="48" height="46">'+s.svg+'</svg><div style="font-size:11px;font-weight:800;margin-top:4px">'+s.n+'</div>';d.onmouseenter=function(){d.style.borderColor='var(--ac)'};d.onmouseleave=function(){d.style.borderColor='transparent'};d.onclick=function(){document.getElementById('info').innerHTML='<div style="font-family:Grandstander,cursive;font-size:18px;font-weight:800;color:var(--ac);margin-bottom:4px">'+s.n+'</div><div style="font-size:13px;font-weight:600;color:var(--ink);line-height:1.6">'+(s.s===0?'No sides · No corners':'<b>Sides: '+s.s+'</b> · <b>Corners: '+s.c+'</b>')+'<br>'+s.f+'</div>'};g.appendChild(d)})}
-bldG();
-function nwSQ(){var s=SH[Math.floor(Math.random()*SH.length)];document.getElementById('sDisp').innerHTML='<svg viewBox="0 0 80 76" width="120" height="114">'+s.svg+'</svg>';document.getElementById('sQ').textContent='This is a '+s.n+'. How many sides?';document.getElementById('sF').textContent='';mkOpts('sO',pool4(s.s,0,8),s.s,'sF')}
-nwSQ();
-var PATS=[['🔵','🔺','🔵','🔺','🔵','🔺'],['🟩','🟩','🔴','🟩','🟩','🔴'],['🔺','🟩','🔵','🔺','🟩','🔵'],['🟠','🟠','🔵','🟠','🟠','🔵'],['🟪','🔵','🟪','🔵','🟪','🔵']];
-var PAL=['🔵','🔺','🟩','🟪','🔴','🟠'];var pAns='';
-function nwPQ(){var seq=PATS[Math.floor(Math.random()*PATS.length)];pAns=seq[5];document.getElementById('patS').textContent=seq.slice(0,5).join('  ')+'  ❓';document.getElementById('patF').textContent='';
-var w=PAL.filter(function(e){return e!==pAns}).sort(function(){return Math.random()-.5}).slice(0,3);var ch=[pAns].concat(w).sort(function(){return Math.random()-.5});
-var o=document.getElementById('patO');o.innerHTML='';ch.forEach(function(em){var b=document.createElement('button');b.className='opt';b.style.fontSize='28px';b.textContent=em;b.onclick=function(){o.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById('patF');if(em===pAns){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}else{b.classList.add('no');fb.textContent='The pattern continues with '+pAns+'.';fb.style.color='var(--no)';o.querySelectorAll('.opt').forEach(function(x){if(x.textContent===pAns)x.classList.add('ok')})}};o.appendChild(b)})}
-nwPQ();
 
+var curSh=null,spinDeg=0;
+function bldGrid(){
+  var g=document.getElementById('sGrid');g.innerHTML='';
+  SH.forEach(function(s,i){
+    var d=document.createElement('div');
+    d.style.cssText='background:#fff;border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer;border:2px solid rgba(0,0,0,.06);transition:.18s;user-select:none';
+    d.innerHTML='<svg viewBox="0 0 104 104" width="56" height="56">'+s.svg+'</svg><div style="font-size:11px;font-weight:800;margin-top:4px">'+s.n+'</div>';
+    d.onmouseenter=function(){if(curSh!==i)d.style.borderColor=s.color};
+    d.onmouseleave=function(){if(curSh!==i)d.style.borderColor='rgba(0,0,0,.06)'};
+    d.onclick=function(){curSh=i;spinDeg=0;shInfo(i);document.querySelectorAll('#sGrid>div').forEach(function(x,j){x.style.borderColor=j===i?SH[j].color:'rgba(0,0,0,.06)';x.style.background=j===i?'rgba(0,0,0,.02)':'#fff'})};
+    g.appendChild(d);
+  });
+}
+function shInfo(i){
+  var s=SH[i];
+  document.getElementById('shapeInfo').innerHTML='<div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">'
+    +'<svg viewBox="0 0 104 104" width="80" height="80" style="flex-shrink:0">'+s.svg+'</svg>'
+    +'<div style="flex:1"><div style="font-family:Grandstander,cursive;font-size:20px;font-weight:900;color:'+s.color+';margin-bottom:8px">'+s.n+'</div>'
+    +(s.sides===0
+      ?'<div style="font-size:13px;font-weight:600;line-height:1.7;color:var(--ink)">No sides · No corners · Infinite symmetry</div>'
+      :'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">'
+        +'<span style="background:'+s.color+'22;color:'+s.color+';font-family:Grandstander,cursive;font-size:13px;font-weight:800;padding:3px 12px;border-radius:20px">'+s.sides+' sides</span>'
+        +'<span style="background:'+s.color+'22;color:'+s.color+';font-family:Grandstander,cursive;font-size:13px;font-weight:800;padding:3px 12px;border-radius:20px">'+s.corners+' corners</span>'
+        +'<span style="background:'+s.color+'22;color:'+s.color+';font-family:Grandstander,cursive;font-size:13px;font-weight:800;padding:3px 12px;border-radius:20px">'+s.sym+' symmetry</span>'
+      +'</div>')
+    +'<div style="font-size:13px;font-weight:600;color:var(--ink2);line-height:1.7">'+s.fact+'</div></div></div>';
+  document.getElementById('spinArea').style.display='';rndrSpin();
+}
+function rndrSpin(){if(curSh===null)return;var s=SH[curSh];document.getElementById('spinSVG').innerHTML='<svg viewBox="0 0 104 104" width="110" height="110" style="transform:rotate('+spinDeg+'deg);transition:.3s">'+s.svg+'</svg>';document.getElementById('spinNote').textContent=s.sides===0?'A circle always looks the same — rotate it all you want!':'Rotate it. Does it look exactly the same from every angle?'}
+function spin(d){if(d===0)spinDeg=0;else spinDeg+=d;rndrSpin()}
+bldGrid();
+
+/* ── BUILD SLATE ── */
+var DRAW_SHAPES=[
+  {id:'circle',label:'Circle'},{id:'triangle',label:'Triangle'},
+  {id:'square',label:'Square'},{id:'rectangle',label:'Rectangle'},
+  {id:'pentagon',label:'Pentagon'},{id:'hexagon',label:'Hexagon'}
+];
+var DRAW_COLORS=['#7C3AED','#3B82F6','#16A34A','#EA580C','#E11D48','#CA8A04','#DB2777','#374151'];
+var PROMPTS=[
+  '🏠 Try making a house!','🚀 Can you build a rocket?',
+  '🌲 Draw a tree with shapes!','⛵ Make a boat!','🦋 Try a butterfly!'
+];
+var curDrawShape='rectangle',curColor='#7C3AED',isDrawing=false;
+var sx=0,sy=0,ex=0,ey=0,slateShapes=[];
+
+function bldBuildUI(){
+  /* prompts */
+  var pp=document.getElementById('prompts');pp.innerHTML='';
+  PROMPTS.forEach(function(p){
+    var b=document.createElement('div');
+    b.style.cssText='font-size:12px;font-weight:700;color:var(--ac);background:rgba(124,58,237,.07);border-radius:8px;padding:5px 10px;cursor:default';
+    b.textContent=p;pp.appendChild(b);
+  });
+  /* shape picker */
+  var dp=document.getElementById('drawPicker');dp.innerHTML='';
+  DRAW_SHAPES.forEach(function(ds){
+    var b=document.createElement('button');b.id='dpick_'+ds.id;
+    b.style.cssText='font-family:Grandstander,cursive;font-size:12px;font-weight:800;padding:6px 12px;border-radius:10px;border:2px solid rgba(0,0,0,.1);background:'+(curDrawShape===ds.id?'var(--ac)':'#fff')+';cursor:pointer;transition:.15s;color:'+(curDrawShape===ds.id?'#fff':'var(--ink2)');
+    b.textContent=ds.label;
+    b.onclick=function(){curDrawShape=ds.id;document.querySelectorAll('[id^=dpick_]').forEach(function(x){x.style.background='#fff';x.style.color='var(--ink2)';x.style.borderColor='rgba(0,0,0,.1)'});b.style.background='var(--ac)';b.style.color='#fff';b.style.borderColor='var(--ac)'};
+    dp.appendChild(b);
+  });
+  /* colour picker */
+  var cp=document.getElementById('colorPicker');cp.innerHTML='';
+  DRAW_COLORS.forEach(function(col){
+    var c=document.createElement('div');
+    c.style.cssText='width:24px;height:24px;border-radius:50%;background:'+col+';cursor:pointer;transition:.12s;border:3px solid '+(col===curColor?'#1A2E2E':'transparent')+';box-shadow:0 1px 4px rgba(0,0,0,.15)';
+    c.onclick=function(){curColor=col;document.querySelectorAll('#colorPicker div').forEach(function(x){x.style.borderColor='transparent'});c.style.borderColor='#1A2E2E'};
+    cp.appendChild(c);
+  });
+}
+bldBuildUI();
+
+var cvs=document.getElementById('drawSlate');
+var ctx=cvs.getContext('2d');
+
+function clearSlate(){slateShapes=[];redraw();document.getElementById('slateProp').style.display='none'}
+function undoLast(){slateShapes.pop();redraw()}
+
+function redraw(){
+  ctx.clearRect(0,0,cvs.width,cvs.height);
+  /* dot grid */
+  ctx.fillStyle='rgba(99,102,241,.1)';
+  for(var gx=20;gx<cvs.width;gx+=20)for(var gy=20;gy<cvs.height;gy+=20){ctx.beginPath();ctx.arc(gx,gy,1.5,0,Math.PI*2);ctx.fill()}
+  slateShapes.forEach(function(sh){paintShape(ctx,sh)});
+  if(isDrawing)paintShape(ctx,{type:curDrawShape,x1:sx,y1:sy,x2:ex,y2:ey,color:curColor});
+}
+
+function paintShape(ctx,sh){
+  ctx.save();
+  ctx.strokeStyle=sh.color;ctx.fillStyle=sh.color+'40';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';
+  var x=Math.min(sh.x1,sh.x2),y=Math.min(sh.y1,sh.y2),w=Math.abs(sh.x2-sh.x1),h=Math.abs(sh.y2-sh.y1);
+  var cx=(sh.x1+sh.x2)/2,cy=(sh.y1+sh.y2)/2;var r=Math.sqrt(w*w+h*h)/2;
+  ctx.beginPath();
+  if(sh.type==='circle'){ctx.arc(cx,cy,Math.max(r,4),0,Math.PI*2)}
+  else if(sh.type==='triangle'){ctx.moveTo(cx,y);ctx.lineTo(x+w,y+h);ctx.lineTo(x,y+h);ctx.closePath()}
+  else if(sh.type==='square'){var s=Math.max(Math.min(w,h),8);ctx.rect(cx-s/2,cy-s/2,s,s)}
+  else if(sh.type==='rectangle'){ctx.rect(x,y,Math.max(w,8),Math.max(h,8))}
+  else if(sh.type==='pentagon'){var pr=Math.max(r,10);for(var i=0;i<5;i++){var a=(i*72-90)*Math.PI/180;if(i===0)ctx.moveTo(cx+pr*Math.cos(a),cy+pr*Math.sin(a));else ctx.lineTo(cx+pr*Math.cos(a),cy+pr*Math.sin(a))}ctx.closePath()}
+  else if(sh.type==='hexagon'){var hr=Math.max(r,10);for(var i=0;i<6;i++){var a=(i*60-30)*Math.PI/180;if(i===0)ctx.moveTo(cx+hr*Math.cos(a),cy+hr*Math.sin(a));else ctx.lineTo(cx+hr*Math.cos(a),cy+hr*Math.sin(a))}ctx.closePath()}
+  ctx.fill();ctx.stroke();ctx.restore();
+}
+
+function getXY(e){
+  var r=cvs.getBoundingClientRect();var scX=cvs.width/r.width,scY=cvs.height/r.height;
+  var src=e.touches?e.touches[0]:e;
+  return{x:(src.clientX-r.left)*scX,y:(src.clientY-r.top)*scY};
+}
+function showProp(type){
+  var ds=DRAW_SHAPES.find(function(d){return d.id===type});if(!ds)return;
+  var s=SH.find(function(x){return x.n.toLowerCase()===type});
+  var prop=document.getElementById('slateProp');prop.style.display='block';
+  prop.textContent=ds.label+(s&&s.sides===0?' — 0 sides, 0 corners':s?' — '+s.sides+' sides, '+s.corners+' corners':'');
+}
+cvs.addEventListener('mousedown',function(e){e.preventDefault();isDrawing=true;var p=getXY(e);sx=p.x;sy=p.y;ex=sx;ey=sy});
+cvs.addEventListener('mousemove',function(e){if(!isDrawing)return;var p=getXY(e);ex=p.x;ey=p.y;redraw()});
+cvs.addEventListener('mouseup',function(e){if(!isDrawing)return;isDrawing=false;var p=getXY(e);ex=p.x;ey=p.y;if(Math.abs(ex-sx)>6||Math.abs(ey-sy)>6)slateShapes.push({type:curDrawShape,x1:sx,y1:sy,x2:ex,y2:ey,color:curColor});redraw();showProp(curDrawShape)});
+cvs.addEventListener('touchstart',function(e){e.preventDefault();isDrawing=true;var p=getXY(e);sx=p.x;sy=p.y;ex=sx;ey=sy},{passive:false});
+cvs.addEventListener('touchmove',function(e){e.preventDefault();if(!isDrawing)return;var p=getXY(e);ex=p.x;ey=p.y;redraw()},{passive:false});
+cvs.addEventListener('touchend',function(e){e.preventDefault();if(!isDrawing)return;isDrawing=false;if(Math.abs(ex-sx)>6||Math.abs(ey-sy)>6)slateShapes.push({type:curDrawShape,x1:sx,y1:sy,x2:ex,y2:ey,color:curColor});redraw();showProp(curDrawShape)},{passive:false});
+redraw();
+
+/* ── PRACTICE: name shape ── */
+function pool4(ans,lo,hi){var s=new Set([ans]);var i=0;while(s.size<4&&i<50){i++;var w=ans+Math.round(Math.random()*8-4);if(w>=lo&&w<=hi&&w!==ans)s.add(w)}return[...s].sort(function(){return Math.random()-.5})}
+function mkOpts(cid,items,correct,fid){var c=document.getElementById(cid);c.innerHTML='';items.forEach(function(n){var b=document.createElement('button');b.className='opt';b.textContent=n;b.onclick=function(){c.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById(fid);if(String(n)===String(correct)){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}else{b.classList.add('no');fb.textContent='That is a '+correct+'.';fb.style.color='var(--no)';c.querySelectorAll('.opt').forEach(function(x){if(String(x.textContent)===String(correct))x.classList.add('ok')})}};c.appendChild(b)})}
+
+function nwSQ(){
+  var s=SH[Math.floor(Math.random()*SH.length)];
+  document.getElementById('sF').textContent='';
+  document.getElementById('sQ').innerHTML='<svg viewBox="0 0 104 104" width="140" height="140">'+s.svg+'</svg>';
+  var pool=[s.n];var others=SH.filter(function(x){return x.n!==s.n}).slice().sort(function(){return Math.random()-.5});
+  while(pool.length<4&&others.length)pool.push(others.pop().n);
+  pool.sort(function(){return Math.random()-.5});
+  var op=document.getElementById('sO');op.innerHTML='';
+  pool.forEach(function(nm){
+    var b=document.createElement('button');b.className='opt';b.style.fontSize='14px';b.style.minWidth='auto';b.style.padding='0 14px';b.textContent=nm;
+    b.onclick=function(){op.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById('sF');
+      if(nm===s.n){b.classList.add('ok');fb.textContent='🎉 Yes! That is a '+s.n+'!';fb.style.color='var(--ok)'}
+      else{b.classList.add('no');fb.textContent='That is a '+s.n+'.';fb.style.color='var(--no)';op.querySelectorAll('.opt').forEach(function(x){if(x.textContent===s.n)x.classList.add('ok')})}};
+    op.appendChild(b);
+  });
+}
+nwSQ();
+
+/* ── PRACTICE: pattern ── */
+var PATS=[['🔵','🔺','🔵','🔺','🔵','🔺'],['🟩','🟩','🔴','🟩','🟩','🔴'],['🔺','🟩','🔵','🔺','🟩','🔵'],['🟠','🟠','🔵','🟠','🟠','🔵'],['🌟','🔵','🌟','🔵','🌟','🔵'],['🟣','🔺','🔺','🟣','🔺','🔺']];
+var PAL4=['🔵','🔺','🟩','🟪','🔴','🟠','🌟','🟣'];
+var pAns='';
+function nwPQ(){
+  var seq=PATS[Math.floor(Math.random()*PATS.length)];pAns=seq[5];
+  document.getElementById('patF').textContent='';
+  var sc=document.getElementById('patSeq');sc.innerHTML='';
+  seq.slice(0,5).forEach(function(e){var s=document.createElement('span');s.textContent=e;sc.appendChild(s)});
+  var q=document.createElement('span');q.textContent='❓';sc.appendChild(q);
+  var wrong=PAL4.filter(function(e){return e!==pAns}).sort(function(){return Math.random()-.5}).slice(0,3);
+  var ch=[pAns].concat(wrong).sort(function(){return Math.random()-.5});
+  var op=document.getElementById('patO');op.innerHTML='';
+  ch.forEach(function(em){
+    var b=document.createElement('button');b.className='opt';b.style.fontSize='26px';b.textContent=em;
+    b.onclick=function(){op.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById('patF');
+      if(em===pAns){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}
+      else{b.classList.add('no');fb.textContent='The pattern continues with '+pAns+'.';fb.style.color='var(--no)';op.querySelectorAll('.opt').forEach(function(x){if(x.textContent===pAns)x.classList.add('ok')})}};
+    op.appendChild(b);
+  });
+}
+nwPQ();
 </script>
 </body>
 </html>
