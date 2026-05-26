@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4 · Shapes and Patterns</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--r:#FF4D4D;--b:#4D9EFF;--g:#44CC66;--y:#FFD43B;--p:#CC66FF;--o:#FF8B3D;--white:#FEFFFE;--ink:#1A1A2E}
+html,body{width:100%;min-height:100vh}
+body{font-family:'Nunito',sans-serif;background:var(--white);min-height:100vh;padding:0 0 32px;display:flex;flex-direction:column;align-items:center;}
+/* Paint splatter header */
+.paint-header{width:100%;background:linear-gradient(135deg,#1A1A2E 0%,#16213E 100%);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
+.splat{position:absolute;border-radius:50%;filter:blur(18px);opacity:.6;}
+.ph-title{font-family:'Fredoka One',cursive;font-size:26px;color:#fff;z-index:1;text-shadow:0 2px 0 rgba(0,0,0,.3)}
+.ph-chip{background:var(--y);color:#3A2A00;font-size:12px;font-weight:900;padding:5px 14px;border-radius:20px;z-index:1;border:2px solid rgba(0,0,0,.1)}
+.page{width:100%;max-width:700px;padding:16px;display:flex;flex-direction:column;gap:20px}
+.acard{background:var(--white);border-radius:24px;padding:20px;box-shadow:0 6px 0 rgba(0,0,0,.1),0 2px 16px rgba(0,0,0,.07);border:3px solid rgba(255,255,255,.9);position:relative;overflow:hidden;}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;border-radius:24px 24px 0 0;}
+.acard.r::before{background:var(--r)}.acard.b::before{background:var(--b)}.acard.g::before{background:var(--g)}.acard.y::before{background:var(--y)}.acard.p::before{background:var(--p)}
+.ac-title{font-family:'Fredoka One',cursive;font-size:20px;color:var(--ink);margin-bottom:4px}
+.hint{font-size:13px;font-weight:700;color:#666;margin-bottom:14px;line-height:1.5}
+
+/* Shape grid */
+.shape-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:10px;margin-bottom:14px}
+.shape-tile{background:#F8F8FF;border-radius:16px;padding:12px 8px;text-align:center;cursor:pointer;border:3px solid transparent;transition:all .18s;user-select:none;}
+.shape-tile:hover{border-color:#AAF;background:#F0F0FF;transform:scale(1.05)}
+.shape-tile.active{border-color:var(--b);background:#EEF5FF;transform:scale(1.07);box-shadow:0 4px 12px rgba(77,158,255,.25)}
+.shape-name{font-family:'Fredoka One',cursive;font-size:14px;color:var(--ink);margin-top:5px}
+.shape-sub{font-size:11px;color:#888;font-weight:700;margin-top:2px}
+.info-panel{background:#F0F4FF;border-radius:16px;padding:14px 16px;border:3px solid #BFCFFF;min-height:64px;transition:all .25s}
+.info-panel h3{font-family:'Fredoka One',cursive;font-size:20px;color:var(--b);margin-bottom:4px}
+.info-panel p{font-size:14px;color:#444;font-weight:600;line-height:1.6}
+
+/* Count sides quiz */
+.shape-display{display:flex;justify-content:center;margin:8px 0 14px}
+.count-inp{font-family:'Fredoka One',cursive;font-size:30px;width:74px;height:56px;border-radius:12px;border:3px solid #BFCFFF;text-align:center;color:var(--b);outline:none;transition:border-color .15s;-moz-appearance:textfield;background:#F0F4FF}
+.count-inp::-webkit-outer-spin-button,.count-inp::-webkit-inner-spin-button{-webkit-appearance:none}
+.count-inp:focus{border-color:var(--b)}
+.check-btn{background:linear-gradient(135deg,var(--b),#2260CC);color:#fff;border:none;border-radius:12px;padding:11px 22px;font-family:'Fredoka One',cursive;font-size:16px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.12);transition:all .18s;margin-left:8px}
+.check-btn:hover{transform:scale(1.06)}
+.type-fb{font-family:'Fredoka One',cursive;font-size:17px;min-height:22px;margin-top:8px;text-align:center}
+
+/* Pattern maker */
+.palette{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.pal-btn{width:54px;height:54px;border-radius:14px;border:3px solid transparent;cursor:pointer;font-size:26px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:#F8F8FF;}
+.pal-btn:hover{transform:scale(1.12);border-color:#AAF}
+.pal-btn.sel{border-color:var(--b);background:#EEF;transform:scale(1.14);box-shadow:0 4px 10px rgba(77,158,255,.3)}
+.pattern-strip{min-height:68px;background:#F8F8FF;border-radius:16px;border:3px dashed #BFCFFF;display:flex;flex-wrap:wrap;gap:6px;padding:10px;align-items:center;margin-bottom:10px}
+.pat-shape{font-size:36px;cursor:pointer;user-select:none;animation:popIn .15s cubic-bezier(.36,1.7,.6,1);line-height:1;transition:transform .15s}
+.pat-shape:hover{transform:scale(1.22) rotate(8deg)}
+@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
+.strip-ph{font-size:13px;color:#AAA;font-weight:700}
+.pat-btns{display:flex;gap:8px;flex-wrap:wrap}
+.add-btn{background:linear-gradient(135deg,var(--b),#2260CC);color:#fff;border:none;border-radius:12px;padding:10px 20px;font-family:'Fredoka One',cursive;font-size:15px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.12);transition:all .18s}
+.add-btn:hover{transform:scale(1.06)}
+.clr-btn{background:#fff;border:2.5px solid #BFCFFF;color:var(--b);font-family:'Fredoka One',cursive;font-size:14px;padding:10px 18px;border-radius:12px;cursor:pointer}
+
+/* What comes next */
+.pat-seq{font-size:34px;letter-spacing:4px;margin:10px 0 14px;min-height:42px;line-height:1.4}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.opt{font-family:'Fredoka One',cursive;font-size:22px;min-width:66px;height:52px;border-radius:14px;border:3px solid #BFCFFF;background:#fff;cursor:pointer;color:var(--ink);transition:all .14s;padding:0 10px;box-shadow:0 3px 0 rgba(0,0,0,.08)}
+.opt:hover{border-color:var(--b);transform:scale(1.06);background:#F0F4FF}
+.opt.correct{background:#D4F5D4;border-color:var(--g);color:#1A5C25}
+.opt.wrong{background:#FFE0E0;border-color:var(--r);color:#C92A2A}
+.quiz-fb{font-family:'Fredoka One',cursive;font-size:17px;min-height:22px;margin-top:10px;text-align:center}
+.next-btn{margin-top:12px;background:linear-gradient(135deg,var(--p),#8822CC);color:#fff;border:none;border-radius:16px;padding:12px 28px;font-family:'Fredoka One',cursive;font-size:17px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.12);transition:all .18s}
+.next-btn:hover{transform:scale(1.06)}
+</style>
+</head>
+<body>
+<div class="paint-header">
+  <div class="splat" style="width:120px;height:120px;background:#FF4D4D;top:-40px;left:80px"></div>
+  <div class="splat" style="width:90px;height:90px;background:#4D9EFF;top:-20px;right:120px"></div>
+  <div class="splat" style="width:80px;height:80px;background:#FFD43B;bottom:-30px;left:40%"></div>
+  <div class="ph-title">🎨 Shapes and Patterns</div>
+  <div class="ph-chip">Chapter 4</div>
+</div>
+<div class="page">
+  <div class="acard r">
+    <div class="ac-title">👆 Tap a shape to learn about it!</div>
+    <div class="hint">Tap any shape below. Find out its name, how many sides it has, and a cool fact!</div>
+    <div class="shape-grid" id="shapeGrid"></div>
+    <div class="info-panel" id="infoPanel"><h3 style="color:#94A3B8">Tap any shape above 👆</h3><p>Discover how many sides and corners each shape has.</p></div>
+  </div>
+  <div class="acard b">
+    <div class="ac-title">✏️ How many sides does this shape have?</div>
+    <div class="hint">Look at the shape. Count each side carefully — trace your finger around it!</div>
+    <div class="shape-display" id="sDisplay"></div>
+    <div style="font-family:'Fredoka One',cursive;font-size:17px;color:var(--ink);margin-bottom:8px" id="sQuestion">What shape is this?</div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <span style="font-family:'Fredoka One',cursive;font-size:16px;color:var(--ink)">Sides:</span>
+      <input type="number" class="count-inp" id="sidesInput" min="0" max="8" placeholder="?">
+      <button class="check-btn" onclick="checkSides()">Check ✓</button>
+    </div>
+    <div class="type-fb" id="sidesFb"></div>
+    <button class="next-btn" onclick="newSidesQ()" style="margin-top:10px">New shape ↻</button>
+  </div>
+  <div class="acard g">
+    <div class="ac-title">🎨 Make your own repeating pattern!</div>
+    <div class="hint">Pick a shape, press Add. Try to make a pattern like 🔵🔺🔵🔺. Tap any shape to remove it!</div>
+    <div class="palette" id="palette"></div>
+    <div class="pattern-strip" id="patternStrip"><span class="strip-ph">Add shapes to build your pattern…</span></div>
+    <div class="pat-btns">
+      <button class="add-btn" onclick="addToStrip()">+ Add shape</button>
+      <button class="clr-btn" onclick="clearStrip()">✕ Clear</button>
+    </div>
+  </div>
+  <div class="acard p">
+    <div class="ac-title">🔍 What comes next?</div>
+    <div class="hint">Look at the pattern. Figure out what repeats, then pick what ❓ should be!</div>
+    <div class="pat-seq" id="patSeq"></div>
+    <div style="font-family:'Fredoka One',cursive;font-size:15px;color:var(--ink);margin-bottom:8px">Pick the next shape:</div>
+    <div class="opts" id="patOpts"></div>
+    <div class="quiz-fb" id="patFb"></div>
+    <button class="next-btn" onclick="newPatternQ()">New pattern ↻</button>
+  </div>
+</div>
+<script>
+const SHAPES=[
+  {id:'circle',name:'Circle',sides:0,corners:0,svg:'<circle cx="40" cy="40" r="34" fill="#BFDFFF" stroke="#4D9EFF" stroke-width="3"/>',fun:'No sides and no corners — it rolls perfectly! 🎡'},
+  {id:'triangle',name:'Triangle',sides:3,corners:3,svg:'<polygon points="40,6 72,68 8,68" fill="#FFF5B0" stroke="#D97706" stroke-width="3"/>',fun:'3 sides and 3 corners. The strongest shape! 💪'},
+  {id:'square',name:'Square',sides:4,corners:4,svg:'<rect x="8" y="8" width="64" height="64" rx="3" fill="#CCFFDD" stroke="#2F9E44" stroke-width="3"/>',fun:'4 equal sides and 4 equal corners! 🟩'},
+  {id:'rectangle',name:'Rectangle',sides:4,corners:4,svg:'<rect x="4" y="20" width="72" height="40" rx="3" fill="#E0CCFF" stroke="#7C3AED" stroke-width="3"/>',fun:'4 sides — 2 long ones and 2 short ones! 📏'},
+  {id:'pentagon',name:'Pentagon',sides:5,corners:5,svg:'<polygon points="40,6 66,26 57,60 23,60 14,26" fill="#FFCCCC" stroke="#E03131" stroke-width="3"/>',fun:'"Penta" means 5. Five sides, five corners! ⭐'},
+  {id:'hexagon',name:'Hexagon',sides:6,corners:6,svg:'<polygon points="40,6 64,20 64,54 40,68 16,54 16,20" fill="#FFE0B0" stroke="#D97706" stroke-width="3"/>',fun:'"Hex" means 6. Honeybees make hexagons! 🐝'},
+];
+function buildShapeGrid(){
+  const grid=document.getElementById('shapeGrid');
+  SHAPES.forEach(s=>{
+    const tile=document.createElement('div');tile.className='shape-tile';
+    tile.innerHTML=`<svg viewBox="0 0 80 76" width="60" height="56">${s.svg}</svg><div class="shape-name">${s.name}</div><div class="shape-sub">${s.sides===0?'No sides':s.sides+' sides'}</div>`;
+    tile.onclick=()=>{document.querySelectorAll('.shape-tile').forEach(x=>x.classList.remove('active'));tile.classList.add('active');document.getElementById('infoPanel').innerHTML=`<h3>${s.name}</h3><p>${s.sides===0?'No sides · No corners':`<strong>Sides: ${s.sides}</strong> · <strong>Corners: ${s.corners}</strong>`}<br>${s.fun}</p>`;};
+    grid.appendChild(tile);
+  });
+}
+buildShapeGrid();
+let sAns=0,sCur=null;
+function newSidesQ(){sCur=SHAPES[Math.floor(Math.random()*SHAPES.length)];sAns=sCur.sides;document.getElementById('sDisplay').innerHTML=`<svg viewBox="0 0 80 76" width="130" height="122">${sCur.svg}</svg>`;document.getElementById('sQuestion').textContent='This is a '+sCur.name+'. How many sides does it have?';document.getElementById('sidesInput').value='';document.getElementById('sidesFb').textContent='';}
+function checkSides(){const val=parseInt(document.getElementById('sidesInput').value);const fb=document.getElementById('sidesFb');if(val===sAns){fb.textContent='🎉 Yes! A '+sCur.name+(sAns===0?' has no sides!':`has ${sAns} sides!`)+' ⭐';fb.style.color='var(--g)';}else if(isNaN(val)){fb.textContent='Type a number!';fb.style.color='var(--o)';}else{fb.textContent='Not quite — trace your finger around every side and count again!';fb.style.color='var(--r)';}}
+newSidesQ();
+const PAL=['🔵','🔺','🟩','🟪','🔴','🟠','🌟','💚'];
+let selEmoji=null;
+function buildPalette(){const pal=document.getElementById('palette');PAL.forEach(em=>{const b=document.createElement('button');b.className='pal-btn';b.textContent=em;b.onclick=()=>{document.querySelectorAll('.pal-btn').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selEmoji=em;};pal.appendChild(b);});}
+buildPalette();
+function addToStrip(){if(!selEmoji){alert('Pick a shape first!');return;}const strip=document.getElementById('patternStrip');const ph=strip.querySelector('.strip-ph');if(ph)ph.remove();const sp=document.createElement('span');sp.className='pat-shape';sp.textContent=selEmoji;sp.onclick=()=>{sp.remove();if(!strip.children.length)strip.innerHTML='<span class="strip-ph">Add shapes to build your pattern…</span>';};strip.appendChild(sp);}
+function clearStrip(){document.getElementById('patternStrip').innerHTML='<span class="strip-ph">Add shapes to build your pattern…</span>';}
+const PATS=[['🔵','🔺','🔵','🔺','🔵','🔺'],['🟩','🟩','🔴','🟩','🟩','🔴'],['🔺','🟩','🔵','🔺','🟩','🔵'],['🟠','🟠','🔵','🟠','🟠','🔵'],['🔵','🔵','🟩','🔵','🔵','🟩'],['🌟','🔴','🌟','🔴','🌟','🔴']];
+let pAns='';
+function newPatternQ(){const seq=PATS[Math.floor(Math.random()*PATS.length)];pAns=seq[5];document.getElementById('patSeq').textContent=seq.slice(0,5).join('  ')+'  ❓';document.getElementById('patFb').textContent='';const wrong=PAL.filter(e=>e!==pAns).sort(()=>Math.random()-.5).slice(0,3);const choices=[pAns,...wrong].sort(()=>Math.random()-.5);const opts=document.getElementById('patOpts');opts.innerHTML='';choices.forEach(em=>{const b=document.createElement('button');b.className='opt';b.style.fontSize='28px';b.textContent=em;b.onclick=()=>{document.querySelectorAll('#patOpts .opt').forEach(x=>x.onclick=null);const fb=document.getElementById('patFb');if(em===pAns){b.classList.add('correct');fb.textContent='🎉 Yes! The pattern continues with '+pAns+'! ⭐';fb.style.color='var(--g)';}else{b.classList.add('wrong');fb.textContent='Look at what repeats! The answer is '+pAns+'.';fb.style.color='var(--r)';document.querySelectorAll('#patOpts .opt').forEach(x=>{if(x.textContent===pAns)x.classList.add('correct');});}};opts.appendChild(b);});}
+newPatternQ();
+</script>
+</body>
+</html>
