@@ -4,299 +4,135 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 4 · Shapes and Patterns</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --accent:#7C3AED;--accent-light:#F5F3FF;--accent-mid:#DDD6FE;
-  --accent-dark:#6D28D9;--bg:#F7F8FA;--surface:#FFFFFF;
-  --ink:#1C2B2B;--ink2:#4B6060;--border:#E4EAE9;
-  --success:#16A34A;--success-bg:#DCFCE7;
-  --error:#DC2626;--error-bg:#FEE2E2;
-}
-html,body{width:100%;min-height:100vh;font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
-
-.header{width:100%;background:var(--surface);border-bottom:2px solid var(--border);padding:16px 20px 0;display:flex;flex-direction:column;align-items:center;position:sticky;top:0;z-index:100}
-.header-row{width:100%;max-width:640px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.chapter-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);background:var(--accent-light);padding:4px 12px;border-radius:20px}
-.header-title{font-size:20px;font-weight:900;color:var(--ink)}
-.tabs{display:flex;gap:4px;width:100%;max-width:640px}
-.tab{flex:1;padding:10px 0;text-align:center;font-size:14px;font-weight:800;cursor:pointer;border-bottom:3px solid transparent;color:var(--ink2);transition:all .2s;border-radius:8px 8px 0 0}
-.tab:hover{color:var(--accent);background:var(--accent-light)}
-.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
-
-.page{width:100%;max-width:640px;margin:0 auto;padding:24px 16px 40px;display:flex;flex-direction:column;gap:20px}
-.panel{display:none}.panel.active{display:flex;flex-direction:column;gap:20px}
-
-.card{background:var(--surface);border-radius:16px;padding:22px;border:1.5px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.05);position:relative}
-.card-accent-bar{position:absolute;top:0;left:0;bottom:0;width:4px;border-radius:16px 0 0 16px}
-.card-accent-bar.violet{background:var(--accent)}
-.card-accent-bar.blue{background:#2563EB}
-.card-accent-bar.green{background:#16A34A}
-.card-title{font-size:17px;font-weight:900;color:var(--ink);margin-bottom:4px;padding-left:12px}
-.card-sub{font-size:13px;font-weight:700;color:var(--ink2);margin-bottom:20px;padding-left:12px;line-height:1.5}
-
-/* ── SHAPE EXPLORER ── */
-.shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
-@media(min-width:480px){.shape-grid{grid-template-columns:repeat(6,1fr)}}
-.shape-tile{
-  background:var(--bg);border-radius:12px;padding:10px 6px;text-align:center;
-  cursor:pointer;border:2px solid transparent;transition:all .18s;user-select:none;
-}
-.shape-tile:hover{border-color:var(--accent-mid);background:var(--accent-light)}
-.shape-tile.active{border-color:var(--accent);background:var(--accent-light);transform:scale(1.05)}
-.shape-name{font-size:11px;font-weight:800;color:var(--ink);margin-top:5px}
-.shape-sides{font-size:10px;font-weight:700;color:var(--ink2);margin-top:2px}
-
-.info-panel{
-  background:var(--accent-light);border:1.5px solid var(--accent-mid);border-radius:12px;
-  padding:14px 16px;min-height:68px;transition:all .2s;
-}
-.info-panel h3{font-size:18px;font-weight:900;color:var(--accent);margin-bottom:4px}
-.info-panel p{font-size:14px;font-weight:700;color:var(--ink);line-height:1.6}
-.info-idle{font-size:13px;font-weight:700;color:var(--ink2)}
-
-/* ── SIDES QUIZ ── */
-.shape-display-center{display:flex;justify-content:center;margin:8px 0 14px}
-.sides-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
-.sides-label{font-size:14px;font-weight:800;color:var(--ink2)}
-.sides-inp{font-size:28px;font-weight:900;width:78px;height:56px;border-radius:12px;border:2px solid var(--border);text-align:center;color:var(--accent);outline:none;transition:border-color .15s;-moz-appearance:textfield;background:var(--accent-light)}
-.sides-inp::-webkit-outer-spin-button,.sides-inp::-webkit-inner-spin-button{-webkit-appearance:none}
-.sides-inp:focus{border-color:var(--accent)}
-.check-btn{background:var(--accent);color:#fff;border:none;border-radius:12px;padding:12px 22px;font-size:15px;font-weight:800;cursor:pointer;transition:all .18s}
-.check-btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
-.sides-fb{font-size:15px;font-weight:800;min-height:22px;margin-top:8px;text-align:center}
-.refresh-btn{margin-top:12px;background:var(--surface);border:2px solid var(--border);color:var(--ink2);font-size:14px;font-weight:800;padding:9px 20px;border-radius:10px;cursor:pointer;transition:all .15s}
-.refresh-btn:hover{border-color:var(--accent);color:var(--accent)}
-
-/* ── PRACTICE ── */
-.score-bar{display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:10px;padding:10px 14px;border:1.5px solid var(--border)}
-.score-label{font-size:12px;font-weight:800;color:var(--ink2);flex:1}
-.score-nums{font-size:14px;font-weight:900;color:var(--accent)}
-
-.pat-seq{font-size:32px;letter-spacing:5px;margin:12px 0 16px;min-height:42px;line-height:1.4;word-break:break-all}
-.opts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px}
-.opt{font-size:26px;min-width:62px;height:56px;border-radius:12px;border:2px solid var(--border);background:var(--surface);cursor:pointer;color:var(--ink);transition:all .14s;padding:0 10px;display:flex;align-items:center;justify-content:center}
-.opt:hover{border-color:var(--accent);background:var(--accent-light);transform:translateY(-2px)}
-.opt:active{transform:translateY(0)}
-.opt.correct{background:var(--success-bg);border-color:var(--success)}
-.opt.wrong{background:var(--error-bg);border-color:var(--error)}
-.quiz-fb{font-size:15px;font-weight:800;min-height:22px;margin-top:12px;text-align:center}
-.next-btn{margin-top:14px;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:12px 26px;font-size:15px;font-weight:800;cursor:pointer;transition:all .18s;align-self:flex-start}
-.next-btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
-
-/* shape name quiz */
-.big-shape-display{display:flex;justify-content:center;margin:10px 0 16px}
-.name-opts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px}
-.name-opt{font-size:15px;font-weight:800;padding:12px 18px;border-radius:12px;border:2px solid var(--border);background:var(--surface);cursor:pointer;color:var(--ink);transition:all .14s}
-.name-opt:hover{border-color:var(--accent);background:var(--accent-light);transform:translateY(-2px)}
-.name-opt.correct{background:var(--success-bg);border-color:var(--success);color:var(--success)}
-.name-opt.wrong{background:var(--error-bg);border-color:var(--error);color:var(--error)}
+:root{--ac:#7C3AED;--bg:#FDF6EE;--card:#fff;--ink:#1A2E2E;--ink2:#5F7A7A;--ok:#16A34A;--no:#DC2626;--r:20px}
+html,body{width:100%;min-height:100vh;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+.hdr{width:100%;position:sticky;top:0;z-index:100;background:var(--ac);box-shadow:0 4px 24px rgba(0,0,0,.15)}
+.hdr-in{max-width:640px;margin:0 auto;padding:14px 20px 0;text-align:center}
+.ch-n{font-family:'Grandstander',cursive;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.ch-t{font-family:'Grandstander',cursive;font-size:clamp(18px,5vw,26px);font-weight:900;color:#fff;line-height:1.2;margin:2px 0 10px;text-shadow:0 2px 8px rgba(0,0,0,.1)}
+.tabs{display:flex;gap:4px;max-width:280px;margin:0 auto;background:rgba(0,0,0,.1);border-radius:14px 14px 0 0;padding:4px 4px 0}
+.tab{flex:1;padding:9px 0;text-align:center;font-family:'Grandstander',cursive;font-size:14px;font-weight:800;cursor:pointer;border-radius:12px 12px 0 0;color:rgba(255,255,255,.6);transition:.2s;user-select:none}
+.tab.on{background:var(--bg);color:var(--ac)}
+.tab:not(.on):hover{color:#fff;background:rgba(255,255,255,.08)}
+.page{max-width:620px;margin:0 auto;padding:14px 14px 60px}
+.pnl{display:none;flex-direction:column;gap:16px}.pnl.on{display:flex}
+.card{background:var(--card);border-radius:var(--r);padding:20px 18px;box-shadow:0 3px 16px rgba(0,0,0,.06);position:relative;overflow:hidden}
+.cb{position:absolute;top:0;left:0;bottom:0;width:5px;border-radius:var(--r) 0 0 var(--r);background:var(--ac)}
+.ct{font-family:'Grandstander',cursive;font-size:15px;font-weight:800;padding-left:14px;margin-bottom:3px;line-height:1.3}
+.cs{font-size:12px;color:var(--ink2);padding-left:14px;margin-bottom:14px;line-height:1.6}
+/* stepper */
+.cr{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.cg{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.03);border-radius:12px;padding:8px 12px;border:1.5px solid rgba(0,0,0,.06)}
+.cl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;min-width:48px}
+.sb{width:34px;height:34px;border-radius:50%;border:none;font-size:18px;font-weight:900;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.12s;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.sb:active{transform:scale(.88)}
+.sv{font-family:'Grandstander',cursive;font-size:28px;font-weight:900;min-width:28px;text-align:center}
+/* blocks */
+.bx{background:rgba(0,0,0,.02);border-radius:14px;border:1.5px solid rgba(0,0,0,.06);padding:12px;min-height:60px;display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-bottom:14px}
+.flat{display:grid;grid-template-columns:repeat(10,8px);gap:1px}.flat-c{width:8px;height:8px;border-radius:1px;opacity:.8}
+.rod{display:flex;flex-direction:column;gap:1px}.rod-c{width:10px;height:10px;border-radius:1px;opacity:.8}
+.units{display:flex;flex-wrap:wrap;gap:2px;max-width:58px;align-self:flex-end}.unit-c{width:10px;height:10px;border-radius:2px;opacity:.8}
+.sep{width:1px;background:#D1D5DB;align-self:stretch;margin:0 3px}
+/* options */
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{font-family:'Grandstander',cursive;font-size:22px;font-weight:800;min-width:72px;height:54px;border-radius:16px;border:2.5px solid rgba(0,0,0,.08);background:#fff;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:.15s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.opt:hover{border-color:var(--ac);transform:translateY(-2px)}
+.opt.ok{background:#DCFCE7;border-color:var(--ok);color:#15803D;animation:pop .3s}
+.opt.no{background:#FEE2E2;border-color:var(--no);color:var(--no);animation:shk .35s}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.fb{font-family:'Grandstander',cursive;font-size:14px;font-weight:700;min-height:20px;margin-top:10px;text-align:center}
+.nbtn{font-family:'Grandstander',cursive;font-size:14px;font-weight:800;padding:10px 24px;border-radius:14px;border:none;background:var(--ac);color:#fff;cursor:pointer;margin-top:12px;box-shadow:0 3px 10px rgba(0,0,0,.12);transition:.15s}
+.nbtn:hover{transform:translateY(-1px);opacity:.9}
+.btn{font-family:'Grandstander',cursive;font-size:14px;font-weight:800;padding:10px 20px;border-radius:14px;border:none;cursor:pointer;transition:.15s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.btn:hover{transform:translateY(-1px)}
+.btn-p{background:var(--ac);color:#fff}
+.btn-g{background:#fff;color:var(--ink2);border:1.5px solid rgba(0,0,0,.1)}
+.btn-g:hover{border-color:var(--ac);color:var(--ac)}
+.chal{background:rgba(0,0,0,.02);border-radius:16px;padding:14px;border:1.5px dashed rgba(0,0,0,.1);margin-top:10px}
+.chal-q{font-family:'Grandstander',cursive;font-size:14px;font-weight:800;margin-bottom:10px}
+.chal-q b{color:var(--ac);font-size:22px}
+canvas{display:block;border-radius:10px}
+/* drag & tap shared */
+.tappable{cursor:pointer;user-select:none;transition:transform .15s}
+.tappable:hover{transform:scale(1.08)}
+.tappable:active{transform:scale(.92)}
+/* misc */
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{display:inline-block;font-family:'Grandstander',cursive;font-size:14px;font-weight:800;padding:6px 18px;border-radius:30px}
+.big{font-family:'Grandstander',cursive;font-weight:900;line-height:1;text-align:center}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <div class="header-row">
-    <span class="chapter-label">Chapter 4</span>
-    <span class="header-title">Shapes and Patterns</span>
-  </div>
+<div class="hdr"><div class="hdr-in">
+  <div class="ch-n">Chapter 4</div>
+  <div class="ch-t">Shapes and Patterns</div>
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('learn')">Learn</div>
-    <div class="tab" onclick="switchTab('practice')">Practice</div>
+    <div class="tab on" onclick="sw('learn')">Learn</div>
+    <div class="tab" onclick="sw('practice')">Practice</div>
   </div>
-</div>
-
+</div></div>
 <div class="page">
 
-  <!-- LEARN PANEL -->
-  <div class="panel active" id="panel-learn">
-
-    <!-- Shape explorer -->
-    <div class="card">
-      <div class="card-accent-bar violet"></div>
-      <div class="card-title">Tap a shape to learn about it</div>
-      <div class="card-sub">Find out the name, how many sides it has, and a fun fact.</div>
-      <div class="shape-grid" id="shapeGrid"></div>
-      <div class="info-panel" id="infoPanel">
-        <p class="info-idle">Tap any shape above to discover it.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- PRACTICE PANEL -->
-  <div class="panel" id="panel-practice">
-    <div class="score-bar">
-      <span class="score-label">Questions answered</span>
-      <span class="score-nums" id="scoreDisplay">0 correct / 0 total</span>
-    </div>
-
-    <!-- Sides quiz -->
-    <div class="card">
-      <div class="card-accent-bar blue"></div>
-      <div class="card-title">How many sides does this shape have?</div>
-      <div class="card-sub">Trace your finger around every edge and count as you go.</div>
-      <div class="shape-display-center" id="sDisplay"></div>
-      <div style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:12px" id="sQuestion"></div>
-      <div class="sides-row">
-        <span class="sides-label">Number of sides:</span>
-        <input type="number" class="sides-inp" id="sidesInput" min="0" max="8" placeholder="?">
-        <button class="check-btn" onclick="checkSides()">Check ✓</button>
-      </div>
-      <div class="sides-fb" id="sidesFb"></div>
-      <button class="refresh-btn" onclick="newSidesQ()">New shape ↻</button>
-    </div>
-
-    <!-- Name the shape -->
-    <div class="card">
-      <div class="card-accent-bar violet"></div>
-      <div class="card-title">Name this shape</div>
-      <div class="card-sub">Look at the shape and pick the correct name.</div>
-      <div class="big-shape-display" id="nameDisplay"></div>
-      <div class="name-opts" id="nameOpts"></div>
-      <div class="quiz-fb" id="nameFb"></div>
-      <button class="next-btn" onclick="newNameQ()">Next shape →</button>
-    </div>
-
-    <!-- Pattern quiz -->
-    <div class="card">
-      <div class="card-accent-bar green"></div>
-      <div class="card-title">What comes next?</div>
-      <div class="card-sub">Look at the pattern. Figure out what repeats, then pick what ❓ should be.</div>
-      <div class="pat-seq" id="patSeq"></div>
-      <div style="font-size:13px;font-weight:800;color:var(--ink2);margin-bottom:10px">Pick the next shape:</div>
-      <div class="opts" id="patOpts"></div>
-      <div class="quiz-fb" id="patFb"></div>
-      <button class="next-btn" onclick="newPatternQ()">New pattern →</button>
+<div class="pnl on" id="p-learn">
+  <div class="card"><div class="cb"></div>
+    <div class="ct">Tap a shape to explore it</div>
+    <div class="cs">Find out the name, sides, corners, and a fun fact.</div>
+    <div id="sGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px"></div>
+    <div id="info" style="background:rgba(0,0,0,.02);border-radius:14px;padding:14px 16px;border:1.5px solid rgba(0,0,0,.06);min-height:60px">
+      <div style="font-size:13px;font-weight:600;color:var(--ink2)">Tap any shape above.</div>
     </div>
   </div>
-
+</div>
+<div class="pnl" id="p-practice">
+  <div class="card"><div class="cb"></div>
+    <div class="ct">How many sides?</div>
+    <div class="cs">Count the sides of this shape.</div>
+    <div style="display:flex;justify-content:center;margin-bottom:14px" id="sDisp"></div>
+    <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:12px" id="sQ"></div>
+    <div class="opts" id="sO"></div>
+    <div class="fb" id="sF"></div>
+    <button class="nbtn" onclick="nwSQ()">Next →</button>
+  </div>
+  <div class="card"><div class="cb"></div>
+    <div class="ct">What comes next?</div>
+    <div class="cs">Look at the repeating pattern. Pick what goes in place of ❓.</div>
+    <div style="font-size:32px;letter-spacing:5px;margin-bottom:16px;min-height:42px;word-break:break-all" id="patS"></div>
+    <div class="opts" id="patO"></div>
+    <div class="fb" id="patF"></div>
+    <button class="nbtn" onclick="nwPQ()">Next →</button>
+  </div>
 </div>
 
+</div>
 <script>
-function switchTab(name){
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['learn','practice'][i]===name));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-'+name).classList.add('active');
-}
+function sw(n){document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on',t.textContent.toLowerCase()===n)});document.querySelectorAll('.pnl').forEach(function(p){var a=p.id==='p-'+n;p.classList.toggle('on',a);p.style.display=a?'flex':'none'})}
+document.getElementById('p-practice').style.display='none';
+function pool4(ans,lo,hi){var s=new Set([ans]);var i=0;while(s.size<4&&i<50){i++;var w=ans+Math.round(Math.random()*8-4);if(w>=lo&&w<=hi&&w!==ans)s.add(w)}return[...s].sort(function(){return Math.random()-.5})}
+function mkOpts(cid,items,correct,fid){var c=document.getElementById(cid);c.innerHTML='';items.forEach(function(n){var b=document.createElement('button');b.className='opt';b.textContent=n;b.onclick=function(){c.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById(fid);if(String(n)===String(correct)){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}else{b.classList.add('no');fb.textContent='The answer is '+correct+'.';fb.style.color='var(--no)';c.querySelectorAll('.opt').forEach(function(x){if(String(x.textContent)===String(correct))x.classList.add('ok')})}};c.appendChild(b)})}
 
-/* ── SHAPES DATA ── */
-const SHAPES=[
-  {id:'circle',name:'Circle',sides:0,corners:0,
-   svg:'<circle cx="40" cy="40" r="34" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2.5"/>',
-   fun:'A circle has no sides and no corners. It rolls perfectly!'},
-  {id:'triangle',name:'Triangle',sides:3,corners:3,
-   svg:'<polygon points="40,6 72,70 8,70" fill="#FEF9C3" stroke="#CA8A04" stroke-width="2.5"/>',
-   fun:'3 sides and 3 corners. The triangle is the strongest shape.'},
-  {id:'square',name:'Square',sides:4,corners:4,
-   svg:'<rect x="8" y="8" width="64" height="64" rx="2" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/>',
-   fun:'4 equal sides and 4 equal corners.'},
-  {id:'rectangle',name:'Rectangle',sides:4,corners:4,
-   svg:'<rect x="4" y="22" width="72" height="36" rx="2" fill="#F3E8FF" stroke="#9333EA" stroke-width="2.5"/>',
-   fun:'4 sides — 2 longer ones and 2 shorter ones.'},
-  {id:'pentagon',name:'Pentagon',sides:5,corners:5,
-   svg:'<polygon points="40,6 68,26 58,60 22,60 12,26" fill="#FFE4E6" stroke="#E11D48" stroke-width="2.5"/>',
-   fun:'"Penta" means five. Five sides, five corners.'},
-  {id:'hexagon',name:'Hexagon',sides:6,corners:6,
-   svg:'<polygon points="40,6 64,20 64,54 40,68 16,54 16,20" fill="#FFEDD5" stroke="#EA580C" stroke-width="2.5"/>',
-   fun:'"Hex" means six. Honeybees build hexagons!'},
+var SH=[
+  {n:'Circle',s:0,c:0,svg:'<circle cx="40" cy="40" r="34" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2.5"/>',f:'No sides, no corners — it rolls!'},
+  {n:'Triangle',s:3,c:3,svg:'<polygon points="40,6 72,70 8,70" fill="#FEF9C3" stroke="#CA8A04" stroke-width="2.5"/>',f:'3 sides, 3 corners. The strongest shape!'},
+  {n:'Square',s:4,c:4,svg:'<rect x="8" y="8" width="64" height="64" rx="2" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/>',f:'4 equal sides and 4 equal corners.'},
+  {n:'Rectangle',s:4,c:4,svg:'<rect x="4" y="22" width="72" height="36" rx="2" fill="#F3E8FF" stroke="#9333EA" stroke-width="2.5"/>',f:'4 sides — 2 long, 2 short.'},
+  {n:'Pentagon',s:5,c:5,svg:'<polygon points="40,6 68,26 58,60 22,60 12,26" fill="#FFE4E6" stroke="#E11D48" stroke-width="2.5"/>',f:'Penta means five!'},
+  {n:'Hexagon',s:6,c:6,svg:'<polygon points="40,6 64,20 64,54 40,68 16,54 16,20" fill="#FFEDD5" stroke="#EA580C" stroke-width="2.5"/>',f:'Hex means six. Bees build hexagons!'}
 ];
+function bldG(){var g=document.getElementById('sGrid');SH.forEach(function(s,i){var d=document.createElement('div');d.style.cssText='background:rgba(0,0,0,.02);border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer;border:2px solid transparent;transition:.18s;user-select:none';d.innerHTML='<svg viewBox="0 0 80 76" width="48" height="46">'+s.svg+'</svg><div style="font-size:11px;font-weight:800;margin-top:4px">'+s.n+'</div>';d.onmouseenter=function(){d.style.borderColor='var(--ac)'};d.onmouseleave=function(){d.style.borderColor='transparent'};d.onclick=function(){document.getElementById('info').innerHTML='<div style="font-family:Grandstander,cursive;font-size:18px;font-weight:800;color:var(--ac);margin-bottom:4px">'+s.n+'</div><div style="font-size:13px;font-weight:600;color:var(--ink);line-height:1.6">'+(s.s===0?'No sides · No corners':'<b>Sides: '+s.s+'</b> · <b>Corners: '+s.c+'</b>')+'<br>'+s.f+'</div>'};g.appendChild(d)})}
+bldG();
+function nwSQ(){var s=SH[Math.floor(Math.random()*SH.length)];document.getElementById('sDisp').innerHTML='<svg viewBox="0 0 80 76" width="120" height="114">'+s.svg+'</svg>';document.getElementById('sQ').textContent='This is a '+s.n+'. How many sides?';document.getElementById('sF').textContent='';mkOpts('sO',pool4(s.s,0,8),s.s,'sF')}
+nwSQ();
+var PATS=[['🔵','🔺','🔵','🔺','🔵','🔺'],['🟩','🟩','🔴','🟩','🟩','🔴'],['🔺','🟩','🔵','🔺','🟩','🔵'],['🟠','🟠','🔵','🟠','🟠','🔵'],['🟪','🔵','🟪','🔵','🟪','🔵']];
+var PAL=['🔵','🔺','🟩','🟪','🔴','🟠'];var pAns='';
+function nwPQ(){var seq=PATS[Math.floor(Math.random()*PATS.length)];pAns=seq[5];document.getElementById('patS').textContent=seq.slice(0,5).join('  ')+'  ❓';document.getElementById('patF').textContent='';
+var w=PAL.filter(function(e){return e!==pAns}).sort(function(){return Math.random()-.5}).slice(0,3);var ch=[pAns].concat(w).sort(function(){return Math.random()-.5});
+var o=document.getElementById('patO');o.innerHTML='';ch.forEach(function(em){var b=document.createElement('button');b.className='opt';b.style.fontSize='28px';b.textContent=em;b.onclick=function(){o.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById('patF');if(em===pAns){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}else{b.classList.add('no');fb.textContent='The pattern continues with '+pAns+'.';fb.style.color='var(--no)';o.querySelectorAll('.opt').forEach(function(x){if(x.textContent===pAns)x.classList.add('ok')})}};o.appendChild(b)})}
+nwPQ();
 
-/* ── SHAPE GRID ── */
-function buildShapeGrid(){
-  const grid=document.getElementById('shapeGrid');
-  SHAPES.forEach(s=>{
-    const tile=document.createElement('div');tile.className='shape-tile';
-    tile.innerHTML=`<svg viewBox="0 0 80 76" width="48" height="46">${s.svg}</svg><div class="shape-name">${s.name}</div><div class="shape-sides">${s.sides===0?'No sides':s.sides+' sides'}</div>`;
-    tile.onclick=()=>{
-      document.querySelectorAll('.shape-tile').forEach(x=>x.classList.remove('active'));
-      tile.classList.add('active');
-      document.getElementById('infoPanel').innerHTML=`<h3>${s.name}</h3><p>${s.sides===0?'No sides · No corners':'<strong>Sides: '+s.sides+'</strong> · <strong>Corners: '+s.corners+'</strong>'}<br>${s.fun}</p>`;
-    };
-    grid.appendChild(tile);
-  });
-}
-buildShapeGrid();
-
-/* ── SIDES QUIZ ── */
-let sCur=null,sAns=0;
-function newSidesQ(){
-  sCur=SHAPES[Math.floor(Math.random()*SHAPES.length)];sAns=sCur.sides;
-  document.getElementById('sDisplay').innerHTML=`<svg viewBox="0 0 80 76" width="120" height="114">${sCur.svg}</svg>`;
-  document.getElementById('sQuestion').textContent='This is a '+sCur.name+'. How many sides does it have?';
-  document.getElementById('sidesInput').value='';document.getElementById('sidesFb').textContent='';
-}
-function checkSides(){
-  const val=parseInt(document.getElementById('sidesInput').value);
-  const fb=document.getElementById('sidesFb');
-  if(val===sAns){fb.textContent='Correct! A '+sCur.name+(sAns===0?' has no sides.':' has '+sAns+' sides.');fb.style.color='var(--success)';}
-  else if(isNaN(val)){fb.textContent='Type a number.';fb.style.color='var(--ink2)';}
-  else{fb.textContent='Not quite — trace your finger around every side and count again.';fb.style.color='var(--error)';}
-}
-newSidesQ();
-
-/* ── PRACTICE ── */
-let correct=0,total=0;
-function updateScore(){document.getElementById('scoreDisplay').textContent=correct+' correct / '+total+' total';}
-
-/* Name the shape quiz */
-let nameAns='';
-function newNameQ(){
-  const s=SHAPES[Math.floor(Math.random()*SHAPES.length)];nameAns=s.name;
-  document.getElementById('nameFb').textContent='';
-  document.getElementById('nameDisplay').innerHTML=`<svg viewBox="0 0 80 76" width="130" height="122">${s.svg}</svg>`;
-  const wrong=SHAPES.filter(x=>x.name!==s.name).sort(()=>Math.random()-.5).slice(0,3).map(x=>x.name);
-  const choices=[s.name,...wrong].sort(()=>Math.random()-.5);
-  const opts=document.getElementById('nameOpts');opts.innerHTML='';
-  choices.forEach(name=>{
-    const b=document.createElement('button');b.className='name-opt';b.textContent=name;
-    b.onclick=()=>{
-      document.querySelectorAll('#nameOpts .name-opt').forEach(x=>x.onclick=null);
-      total++;const fb=document.getElementById('nameFb');
-      if(name===nameAns){correct++;b.classList.add('correct');fb.textContent='Correct! That is a '+nameAns+'.';fb.style.color='var(--success)';}
-      else{b.classList.add('wrong');fb.textContent='Not quite. That is a '+nameAns+'.';fb.style.color='var(--error)';document.querySelectorAll('#nameOpts .name-opt').forEach(x=>{if(x.textContent===nameAns)x.classList.add('correct');});}
-      updateScore();
-    };
-    opts.appendChild(b);
-  });
-}
-newNameQ();
-
-/* Pattern quiz */
-const PATS=[
-  ['🔵','🔺','🔵','🔺','🔵','🔺'],
-  ['🟩','🟩','🔴','🟩','🟩','🔴'],
-  ['🔺','🟩','🔵','🔺','🟩','🔵'],
-  ['🟠','🟠','🔵','🟠','🟠','🔵'],
-  ['🔵','🔵','🟩','🔵','🔵','🟩'],
-  ['🌟','🔴','🌟','🔴','🌟','🔴'],
-  ['🟪','🔵','🟪','🔵','🟪','🔵'],
-  ['🔺','🔺','🟩','🔺','🔺','🟩'],
-];
-const PAL=['🔵','🔺','🟩','🟪','🔴','🟠','🌟'];
-let pAns='';
-
-function newPatternQ(){
-  const seq=PATS[Math.floor(Math.random()*PATS.length)];pAns=seq[5];
-  document.getElementById('patSeq').textContent=seq.slice(0,5).join('  ')+'  ❓';
-  document.getElementById('patFb').textContent='';
-  const wrong=PAL.filter(e=>e!==pAns).sort(()=>Math.random()-.5).slice(0,3);
-  const choices=[pAns,...wrong].sort(()=>Math.random()-.5);
-  const opts=document.getElementById('patOpts');opts.innerHTML='';
-  choices.forEach(em=>{
-    const b=document.createElement('button');b.className='opt';b.textContent=em;
-    b.onclick=()=>{
-      document.querySelectorAll('#patOpts .opt').forEach(x=>x.onclick=null);
-      total++;const fb=document.getElementById('patFb');
-      if(em===pAns){correct++;b.classList.add('correct');fb.textContent='Correct! The pattern continues with '+pAns+'.';fb.style.color='var(--success)';}
-      else{b.classList.add('wrong');fb.textContent='Look at what repeats. The answer is '+pAns+'.';fb.style.color='var(--error)';document.querySelectorAll('#patOpts .opt').forEach(x=>{if(x.textContent===pAns)x.classList.add('correct');});}
-      updateScore();
-    };
-    opts.appendChild(b);
-  });
-}
-newPatternQ();
 </script>
 </body>
 </html>
