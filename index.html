@@ -1,317 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 4 · Shapes and Patterns</title>
-<link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Shapes &amp; Patterns — Grade 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,800;9..40,900&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--ac:#7C3AED;--bg:#FDF6EE;--card:#fff;--ink:#1A2E2E;--ink2:#5F7A7A;--ok:#16A34A;--no:#DC2626;--r:20px}
-html,body{width:100%;min-height:100vh;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
-.hdr{width:100%;position:sticky;top:0;z-index:100;background:var(--ac);box-shadow:0 4px 24px rgba(0,0,0,.15)}
-.hdr-in{max-width:640px;margin:0 auto;padding:14px 20px 0;text-align:center}
-.ch-n{font-family:'Grandstander',cursive;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.65)}
-.ch-t{font-family:'Grandstander',cursive;font-size:clamp(18px,5vw,26px);font-weight:900;color:#fff;line-height:1.2;margin:2px 0 10px;text-shadow:0 2px 8px rgba(0,0,0,.1)}
-.tabs{display:flex;gap:4px;max-width:340px;margin:0 auto;background:rgba(0,0,0,.1);border-radius:14px 14px 0 0;padding:4px 4px 0}
-.tab{flex:1;padding:9px 0;text-align:center;font-family:'Grandstander',cursive;font-size:13px;font-weight:800;cursor:pointer;border-radius:12px 12px 0 0;color:rgba(255,255,255,.6);transition:.2s;user-select:none}
-.tab.on{background:var(--bg);color:var(--ac)}
-.tab:not(.on):hover{color:#fff;background:rgba(255,255,255,.08)}
-.page{max-width:620px;margin:0 auto;padding:14px 14px 60px}
-.pnl{display:none;flex-direction:column;gap:16px}.pnl.on{display:flex}
-.card{background:var(--card);border-radius:var(--r);padding:20px 18px;box-shadow:0 3px 16px rgba(0,0,0,.06);position:relative;overflow:hidden}
-.cb{position:absolute;top:0;left:0;bottom:0;width:5px;border-radius:var(--r) 0 0 var(--r);background:var(--ac)}
-.ct{font-family:'Grandstander',cursive;font-size:15px;font-weight:800;padding-left:14px;margin-bottom:3px;line-height:1.3}
-.cs{font-size:12px;color:var(--ink2);padding-left:14px;margin-bottom:16px;line-height:1.6}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg1:#fddcb5;--bg2:#dff2e0;
+  --card:#fff;--border:#1a1a2e;
+  --ink:#1a1a2e;--ink2:#4a4a5a;--ink3:#9090a0;
+  --teal:#4ecdc4;--orange:#ff6b35;--yellow:#ffd93d;--red:#e63946;--purple:#a78bfa;--green:#2a9d8f;
+  --sans:'DM Sans',system-ui,sans-serif;--mono:'DM Mono',monospace;
+}
+html{background:linear-gradient(135deg,var(--bg1) 0%,#fef6e8 50%,var(--bg2) 100%);min-height:100vh}
+body{font-family:var(--sans);color:var(--ink);min-height:100vh;padding:32px 24px;display:flex;flex-direction:column;align-items:center}
+
+/* PAGE CARD */
+.page-card{background:var(--card);border:2px solid var(--border);border-radius:24px;width:100%;max-width:960px;overflow:hidden}
+
+/* HEADER */
+.card-header{padding:28px 36px 22px}
+.activity-pill{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);border:2px solid var(--border);border-radius:30px;padding:4px 14px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.activity-pill::before{content:'★';font-size:10px}
+.page-title{font-size:clamp(24px,4vw,40px);font-weight:900;line-height:1.05;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.t-pill{color:#fff;border:2px solid var(--border);border-radius:12px;padding:3px 16px;font-style:italic;font-size:inherit;display:inline-block}
+.page-desc{font-size:15px;color:var(--ink2);line-height:1.6;max-width:600px}
+.page-desc em{color:var(--red);font-style:italic;font-weight:700}
+
+/* BODY LAYOUTS */
+.two-col{display:grid;grid-template-columns:1fr 280px;border-top:1px dashed #d0d0d8}
+.two-col-wide{display:grid;grid-template-columns:1fr 320px;border-top:1px dashed #d0d0d8}
+.one-col{border-top:1px dashed #d0d0d8}
+.left-col{padding:24px 28px;border-right:1px dashed #d0d0d8;display:flex;flex-direction:column;gap:20px}
+.right-col{padding:20px 18px;display:flex;flex-direction:column;gap:14px}
+.full-col{padding:24px 28px;display:flex;flex-direction:column;gap:20px}
+
+/* SECTION LABELS */
+.sec{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.sec-dot{width:13px;height:13px;border-radius:50%;flex-shrink:0}
+.sec-title{font-size:14px;font-weight:800;color:var(--ink)}
+.sec-rule{flex:1;border:none;border-top:1px dashed #d8d8e0}
+
+/* INFO CARDS (right col) */
+.info-card{background:#fff;border:2px solid var(--border);border-radius:18px;padding:14px 16px}
+.info-card + .info-card{margin-top:0}
+
+/* CONTROLS — sliders */
+.ctrl-block{display:flex;flex-direction:column;gap:5px}
+.ctrl-head{display:flex;justify-content:space-between;align-items:baseline}
+.ctrl-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3)}
+.ctrl-val{font-family:var(--mono);font-size:24px;font-weight:700}
+input[type=range]{-webkit-appearance:none;width:100%;height:5px;border-radius:3px;background:#e8e8e8;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px solid var(--border)}
+
+/* TABS / SCENARIO BUTTONS */
+.tab-row{display:flex;gap:8px;flex-wrap:wrap;padding:16px 28px;border-bottom:1px dashed #d0d0d8;background:#fafafa}
+.tab-btn{padding:8px 18px;border:2px solid #d0d0d8;border-radius:30px;background:#fff;font-family:var(--sans);font-size:13px;font-weight:700;color:var(--ink2);cursor:pointer;transition:all .14s}
+.tab-btn:hover{border-color:var(--teal);color:var(--teal)}
+.tab-btn.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+.tab-btn.active-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+/* STEP NAV */
+.step-nav{display:flex;align-items:center;gap:12px;padding:14px 28px;border-bottom:1px dashed #d0d0d8;background:#fafafa}
+.step-btn{padding:8px 20px;border:2px solid var(--border);border-radius:30px;font-family:var(--sans);font-size:13px;font-weight:800;cursor:pointer;background:#fff;color:var(--ink2);transition:all .14s}
+.step-btn:hover:not(:disabled){background:#f5f5f5}
+.step-btn:disabled{opacity:.35;cursor:default}
+.step-btn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+.step-btn.primary:hover{background:#3ab5ac}
+.step-dots{display:flex;gap:6px}
+.sdot{width:9px;height:9px;border-radius:50%;background:#d8d8e0;transition:all .15s}
+.sdot.done{background:var(--teal)}
+.sdot.cur{background:var(--teal);transform:scale(1.3)}
+.step-lbl{flex:1;font-size:14px;font-weight:700;color:var(--ink)}
+
+/* STEP BANNER */
+.step-banner{padding:14px 28px;background:#fffbe6;border-bottom:1px dashed #d0d0d8;display:flex;align-items:baseline;gap:10px}
+.step-num{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--orange);flex-shrink:0}
+.step-text{font-size:15px;font-weight:700;color:var(--ink);line-height:1.4}
+
+/* CANVAS AREA */
+.canvas-wrap{background:#2d2d44;border-radius:0;overflow:hidden;position:relative}
+canvas{display:block;width:100%;height:auto}
+
+/* FACT / STATS ROWS */
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dashed #e8e8e8}
+.fact-row:last-child{border-bottom:none}
+.fact-lbl{font-size:13px;color:var(--ink2)}
+.fact-val{font-family:var(--mono);font-size:16px;font-weight:700}
+
+/* TALLY BUTTONS */
+.tally{display:flex;align-items:center;gap:8px}
+.tally-btn{width:36px;height:36px;border:2px solid var(--border);border-radius:10px;background:#fff;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .12s;color:var(--ink2)}
+.tally-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.tally-num{font-family:var(--mono);font-size:28px;font-weight:700;min-width:40px;text-align:center}
+
+/* VERDICT STRIP */
+.verdict-strip{padding:14px 28px;font-size:15px;font-weight:700;border-top:1px dashed #d0d0d8}
+.verdict-ok{background:#e8faf9;color:var(--green)}
+.verdict-fail{background:#fef0ee;color:#c0441e}
+
+/* INSIGHT STRIP */
+.insight-strip{padding:16px 28px;font-size:14px;color:var(--ink2);line-height:1.7;background:#fffbe6;border-top:1px dashed #d0d0d8}
+.insight-strip strong{color:var(--ink);font-weight:700}
+
+/* NUMBER CIRCLES */
+.num-circle{width:26px;height:26px;border-radius:50%;background:var(--yellow);border:2px solid var(--border);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+
+/* FLOATING SHAPES */
+.shape{position:fixed;pointer-events:none;z-index:-1}
+.sh-circle{width:56px;height:56px;border-radius:50%;background:#ff6b6b;opacity:.65;top:80px;left:calc(50% - 530px)}
+.sh-tri{width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-bottom:38px solid #4ecdc4;opacity:.65;bottom:180px;right:calc(50% - 530px)}
+.sh-star{font-size:34px;line-height:1;opacity:.55;top:200px;right:calc(50% - 510px)}
+.sh-sq{width:36px;height:36px;border-radius:8px;background:#a78bfa;opacity:.55;bottom:90px;left:calc(50% - 510px);transform:rotate(15deg)}
+
+@media(max-width:740px){
+  body{padding:12px}
+  .two-col,.two-col-wide{grid-template-columns:1fr}
+  .left-col{border-right:none;border-bottom:1px dashed #d0d0d8}
+  .card-header,.full-col,.left-col,.right-col{padding-left:18px;padding-right:18px}
+  .tab-row,.step-nav,.step-banner,.verdict-strip,.insight-strip{padding-left:18px;padding-right:18px}
+}
+
+/* SHAPE GRID */
+.shape-tile{background:#fff;border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer;
+  border:2px solid rgba(0,0,0,.06);transition:.18s;user-select:none}
+.shape-tile:hover{transform:translateY(-2px)}
+.stile-name{font-family:'DM Sans',system-ui;font-size:11px;font-weight:800;margin-top:4px;color:var(--ink)}
+/* SHAPE INFO */
+.si-layout{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.si-right{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0}
+.si-name{font-family:'DM Sans',system-ui;font-size:22px;font-weight:900;line-height:1.1}
+.si-badges{display:flex;gap:6px;flex-wrap:wrap}
+.si-badge{font-size:13px;font-weight:800;padding:5px 14px;border-radius:20px;font-family:'DM Mono',monospace}
+.si-fact{font-size:13px;font-weight:600;color:var(--ink2);line-height:1.6;padding:10px 12px;
+  background:#f8f8f8;border-radius:10px;border:1.5px solid #e0e0e0}
+.sym-toggle-btn{padding:8px 18px;border:2px solid var(--purple);border-radius:20px;
+  background:#fff;font-family:'DM Sans',system-ui;font-size:13px;font-weight:800;
+  color:var(--purple);cursor:pointer;transition:all .14s}
+.sym-toggle-btn.on{background:var(--purple);color:#fff}
+.sym-note{font-size:12px;font-weight:700;color:var(--purple);margin-top:6px;
+  padding:8px 12px;background:#f3eeff;border-radius:10px}
+/* SPIN */
+#spinArea{text-align:center}
+#spinSVG{display:flex;justify-content:center;cursor:pointer;margin-bottom:8px}
+#spinNote{font-size:12px;font-weight:700;color:var(--ink3);margin-top:6px}
+.spin-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.spin-btn{padding:7px 16px;border:2px solid #d0d0d8;border-radius:20px;background:#fff;
+  font-family:'DM Sans',system-ui;font-size:13px;font-weight:800;color:var(--ink2);cursor:pointer}
+.spin-btn:hover{border-color:var(--teal);color:var(--teal)}
+/* BUILD */
+.prompts-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.prompt-chip{font-size:12px;font-weight:700;color:var(--orange);background:#fff4ee;
+  border-radius:8px;padding:5px 10px;border:1.5px solid #ffd0b0}
+.pick-row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.pick-group{display:flex;flex-direction:column;gap:6px}
+.pick-group-lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3)}
+#drawPicker{display:flex;gap:6px;flex-wrap:wrap}
+.pick-btn{padding:8px 14px;border:2px solid #d0d0d8;border-radius:12px;background:#fff;
+  font-size:18px;cursor:pointer;transition:all .13s;color:var(--ink)}
+.pick-btn.on{background:var(--teal);border-color:var(--teal)}
+#colorPicker{display:flex;gap:6px;flex-wrap:wrap}
+.color-swatch{width:26px;height:26px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:.12s}
+.color-swatch.on{border-color:var(--border)}
+.canvas-area{background:#f8f8f8;border:2px dashed #d0d0d8;border-radius:14px;
+  position:relative;overflow:hidden;flex:1;min-height:240px}
+#drawSlate{display:block;touch-action:none;width:100%;height:240px}
+#slateProp{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink3);
+  padding:4px 10px;background:#f0f0f0;border-radius:8px;min-height:22px}
+.slate-btns{display:flex;gap:8px}
+.slate-btn{padding:7px 16px;border:2px solid var(--border);border-radius:20px;
+  font-family:'DM Sans',system-ui;font-size:13px;font-weight:800;cursor:pointer;background:#fff;color:var(--ink2)}
+.slate-btn.danger{color:var(--red);border-color:var(--red)}
+/* PRACTICE */
+.q-card{padding:14px;background:#f8f8f8;border-radius:14px;border:1.5px solid #e0e0e0;margin-bottom:12px}
+.q-lbl{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:10px;font-family:'DM Sans',system-ui}
 .opts{display:flex;gap:8px;flex-wrap:wrap}
-.opt{font-family:'Grandstander',cursive;font-size:20px;font-weight:800;min-width:68px;height:52px;border-radius:14px;border:2.5px solid rgba(0,0,0,.08);background:#fff;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:.15s;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:0 10px}
-.opt:hover{border-color:var(--ac);transform:translateY(-2px)}
-.opt.ok{background:#DCFCE7;border-color:var(--ok);color:#15803D;animation:pop .3s}
-.opt.no{background:#FEE2E2;border-color:var(--no);color:var(--no);animation:shk .35s}
-@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
-@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-.fb{font-family:'Grandstander',cursive;font-size:14px;font-weight:700;min-height:20px;margin-top:10px;text-align:center}
-.nbtn{font-family:'Grandstander',cursive;font-size:14px;font-weight:800;padding:10px 24px;border-radius:14px;border:none;background:var(--ac);color:#fff;cursor:pointer;margin-top:12px;box-shadow:0 3px 10px rgba(0,0,0,.12);transition:.15s}
-.nbtn:hover{transform:translateY(-1px);opacity:.9}
-.btn{font-family:'Grandstander',cursive;font-size:14px;font-weight:800;padding:10px 20px;border-radius:14px;border:none;cursor:pointer;transition:.15s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.btn:hover{transform:translateY(-1px)}
-.btn-p{background:var(--ac);color:#fff}
-.btn-g{background:#fff;color:var(--ink2);border:1.5px solid rgba(0,0,0,.1)}
-.btn-g:hover{border-color:var(--ac);color:var(--ac)}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.opt{padding:9px 20px;border:2px solid #d0d0d8;border-radius:20px;background:#fff;
+  font-family:'DM Sans',system-ui;font-size:14px;font-weight:800;cursor:pointer;transition:all .12s}
+.opt:hover{border-color:var(--teal);color:var(--teal)}
+.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.no{background:var(--no);color:#fff;border-color:var(--no)}
+.fb{font-size:13px;font-weight:800;min-height:20px;margin-top:6px;font-family:'DM Sans',system-ui}
+.pat-seq{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:26px;margin-bottom:8px}
+
+.page-card{max-width:960px}
 </style>
 </head>
 <body>
-<div class="hdr"><div class="hdr-in">
-  <div class="ch-n">Chapter 4</div>
-  <div class="ch-t">Shapes and Patterns</div>
-  <div class="tabs">
-    <div class="tab on" onclick="sw('learn')">Explore</div>
-    <div class="tab" onclick="sw('build')">Build</div>
-    <div class="tab" onclick="sw('practice')">Practice</div>
+<div class="shape sh-circle"></div>
+<div class="shape sh-tri"></div>
+<div class="shape sh-star">★</div>
+<div class="shape sh-sq"></div>
+<div class="page-card">
+  <div class="card-header">
+    <div class="activity-pill">Ch 4 · Grade 2 · Shapes &amp; Patterns</div>
+    <div class="page-title">Shapes &amp; <span class="t-pill" style="background:var(--teal)">Patterns</span></div>
+    <p class="page-desc">Tap any shape to see its <em>sides, angles and symmetry lines</em>. Build with shapes. Test yourself!</p>
   </div>
-</div></div>
-<div class="page">
 
-<!-- ══════════ EXPLORE ══════════ -->
-<div class="pnl on" id="p-learn">
-  <div class="card"><div class="cb"></div>
-    <div class="ct">Tap a shape to explore it</div>
-    <div class="cs">See how many sides and corners each shape has. Then rotate it!</div>
-    <div id="sGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px"></div>
-    <div id="shapeInfo" style="background:rgba(0,0,0,.02);border-radius:14px;padding:16px;border:1.5px solid rgba(0,0,0,.06)">
-      <div style="font-size:13px;font-weight:600;color:var(--ink2)">Tap a shape above to explore it.</div>
+  <!-- TABS -->
+  <div class="tab-row">
+    <button class="tab-btn on" data-tab="learn" onclick="sw('learn')">🔍 Explore</button>
+    <button class="tab-btn" data-tab="build" onclick="sw('build')">✏️ Build</button>
+    <button class="tab-btn" data-tab="practice" onclick="sw('practice')">⭐ Practice</button>
+  </div>
+
+  <!-- EXPLORE -->
+  <div id="p-learn" style="padding:16px 20px;display:flex;flex-direction:column;gap:14px">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px" id="sGrid"></div>
+    <div id="shapeInfo" style="background:#f8f8f8;border-radius:14px;padding:16px;border:1.5px solid #e0e0e0;min-height:80px">
+      <div style="font-size:13px;font-weight:600;color:var(--ink3);font-family:'DM Sans',system-ui">👆 Tap a shape above to explore it.</div>
     </div>
-    <div id="spinArea" style="display:none;margin-top:12px;text-align:center">
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-bottom:8px">Rotate it — does it look different?</div>
-      <div id="spinSVG" style="display:flex;justify-content:center;margin-bottom:10px"></div>
-      <div class="row" style="justify-content:center">
-        <button class="btn btn-g" onclick="spin(-15)">↺ Left</button>
-        <button class="btn btn-g" onclick="spin(15)">↻ Right</button>
-        <button class="btn btn-g" onclick="spin(0)">Reset</button>
+    <div id="spinArea" style="display:none;border-top:1px dashed #d0d0d8;padding-top:14px">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:8px;text-align:center">Spin it!</div>
+      <div id="spinSVG"></div>
+      <div class="spin-row">
+        <button class="spin-btn" onclick="spin(-45)">↺ Left</button>
+        <button class="spin-btn" onclick="spin(45)">↻ Right</button>
+        <button class="spin-btn" onclick="spin(0)">Reset</button>
       </div>
-      <div style="font-size:12px;font-weight:700;color:var(--ink2);margin-top:8px" id="spinNote"></div>
+      <div id="spinNote" style="text-align:center"></div>
     </div>
   </div>
-</div>
 
-<!-- ══════════ BUILD ══════════ -->
-<div class="pnl" id="p-build">
-  <div class="card"><div class="cb"></div>
-    <div class="ct">Build a picture with shapes!</div>
-    <div class="cs">Can you make a house? A rocket? A tree? Pick a shape, pick a colour, then draw on the slate. Have fun!</div>
-
-    <!-- Encouragement prompts -->
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="prompts"></div>
-
-    <!-- Shape picker -->
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-bottom:6px">Shape</div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="drawPicker"></div>
-
-    <!-- Colour picker -->
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-bottom:6px">Colour</div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="colorPicker"></div>
-
-    <!-- Canvas -->
-    <div style="position:relative;background:#F8F9FF;border:2px solid #E0E7FF;border-radius:16px;overflow:hidden;margin-bottom:10px;cursor:crosshair;touch-action:none">
-      <canvas id="drawSlate" width="580" height="320" style="width:100%;height:auto;display:block;touch-action:none"></canvas>
-      <div id="slateProp" style="position:absolute;bottom:10px;left:12px;background:rgba(255,255,255,.92);border-radius:10px;padding:6px 12px;font-family:Grandstander,cursive;font-size:13px;font-weight:800;color:var(--ac);backdrop-filter:blur(4px);display:none;pointer-events:none"></div>
-    </div>
-
-    <div class="row">
-      <button class="btn btn-g" onclick="undoLast()">← Undo</button>
-      <button class="btn btn-g" onclick="clearSlate()">Clear slate ↻</button>
+  <!-- BUILD -->
+  <div id="p-build" style="display:none;padding:16px 20px;flex-direction:column;gap:12px">
+    <div class="prompts-row" id="prompts"></div>
+    <div class="pick-row">
+      <div class="pick-group">
+        <div class="pick-group-lbl">Shape</div>
+        <div id="drawPicker"></div>
+        <div class="pick-group-lbl" style="margin-top:8px">Colour</div>
+        <div id="colorPicker"></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+        <div class="canvas-area"><canvas id="drawSlate"></canvas></div>
+        <div id="slateProp"></div>
+        <div class="slate-btns">
+          <button class="slate-btn" onclick="undoLast()">↩ Undo</button>
+          <button class="slate-btn danger" onclick="clearSlate()">🗑 Clear</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ══════════ PRACTICE ══════════ -->
-<div class="pnl" id="p-practice">
-  <div class="card"><div class="cb"></div>
-    <div class="ct">Name the shape</div>
-    <div class="cs">Look at the shape and pick the correct name.</div>
-    <div style="display:flex;justify-content:center;margin-bottom:14px" id="sQ"></div>
-    <div class="opts" id="sO" style="flex-wrap:wrap"></div>
-    <div class="fb" id="sF"></div>
-    <button class="nbtn" onclick="nwSQ()">Next →</button>
+  <!-- PRACTICE -->
+  <div id="p-practice" style="display:none;padding:16px 20px;flex-direction:column;gap:0">
+    <div class="q-card">
+      <div class="q-lbl">What shape is this?</div>
+      <div id="sO" style="margin:8px 0"></div>
+      <div class="opts" id="sQ"></div>
+      <div class="fb" id="sF"></div>
+    </div>
+    <div class="q-card">
+      <div class="q-lbl">What comes next in the pattern?</div>
+      <div class="pat-seq" id="patSeq"></div>
+      <div class="opts" id="patO"></div>
+      <div class="fb" id="patF"></div>
+    </div>
   </div>
-  <div class="card"><div class="cb"></div>
-    <div class="ct">What comes next?</div>
-    <div class="cs">Study the pattern. Pick what replaces ❓.</div>
-    <div style="font-size:30px;letter-spacing:6px;min-height:44px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:4px;align-items:center" id="patSeq"></div>
-    <div class="opts" id="patO"></div>
-    <div class="fb" id="patF"></div>
-    <button class="nbtn" onclick="nwPQ()">Next →</button>
-  </div>
+
 </div>
-
-</div><!-- /page -->
-
 <script>
-/* ── TAB SWITCH (3 tabs) ── */
+
+/* ── TAB SWITCH ── */
 var TAB_NAMES = {'learn':'Explore','build':'Build','practice':'Practice'};
 function sw(n){
-  document.querySelectorAll('.tab').forEach(function(t){
-    t.classList.toggle('on', t.textContent === TAB_NAMES[n]);
+  document.querySelectorAll('.tab-btn').forEach(function(t){
+    t.classList.toggle('on', t.dataset.tab===n);
   });
   ['learn','build','practice'].forEach(function(id){
-    var p = document.getElementById('p-' + id);
-    var on = id === n;
-    p.classList.toggle('on', on);
-    p.style.display = on ? 'flex' : 'none';
+    var p=document.getElementById('p-'+id);
+    p.style.display = id===n ? '' : 'none';
   });
 }
-document.getElementById('p-build').style.display = 'none';
-document.getElementById('p-practice').style.display = 'none';
 
-/* ── SHAPE DATA ── */
+/* ── SHAPE DATA with symmetry lines ── */
 var SH=[
-  {n:'Circle',sides:0,corners:0,sym:'infinite',color:'#3B82F6',
-    svg:'<circle cx="52" cy="52" r="44" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2.5"/>',
-    fact:'No sides, no corners. Rolls in any direction!'},
-  {n:'Triangle',sides:3,corners:3,sym:'3 lines',color:'#CA8A04',
-    svg:'<polygon points="52,8 92,88 12,88" fill="#FEF9C3" stroke="#CA8A04" stroke-width="2.5"/>',
-    fact:'3 sides, 3 corners. The strongest shape in nature!'},
-  {n:'Square',sides:4,corners:4,sym:'4 lines',color:'#16A34A',
-    svg:'<rect x="10" y="10" width="84" height="84" rx="3" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/>',
-    fact:'4 equal sides, 4 right-angle corners.'},
-  {n:'Rectangle',sides:4,corners:4,sym:'2 lines',color:'#9333EA',
-    svg:'<rect x="6" y="26" width="92" height="52" rx="3" fill="#F3E8FF" stroke="#9333EA" stroke-width="2.5"/>',
-    fact:'2 long sides, 2 short sides. 4 right-angle corners.'},
-  {n:'Pentagon',sides:5,corners:5,sym:'5 lines',color:'#E11D48',
-    svg:'<polygon points="52,8 88,34 76,76 28,76 16,34" fill="#FFE4E6" stroke="#E11D48" stroke-width="2.5"/>',
-    fact:'"Penta" means 5 in Greek!'},
-  {n:'Hexagon',sides:6,corners:6,sym:'6 lines',color:'#EA580C',
-    svg:'<polygon points="52,8 88,30 88,74 52,96 16,74 16,30" fill="#FFEDD5" stroke="#EA580C" stroke-width="2.5"/>',
-    fact:'"Hex" means 6. Honeybees build hexagons!'}
+  {n:'Circle',   sides:0,corners:0,color:'#3B82F6',
+   svg:'<circle cx="52" cy="52" r="44" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2.5"/>',
+   pts:[], symLines:[], fact:'No sides, no corners. Rolls in any direction!',
+   symNote:'A circle has INFINITE lines of symmetry!'},
+  {n:'Triangle', sides:3,corners:3,color:'#CA8A04',
+   svg:'<polygon points="52,8 92,88 12,88" fill="#FEF9C3" stroke="#CA8A04" stroke-width="2.5"/>',
+   pts:[[52,8],[92,88],[12,88]],
+   symLines:[[[52,8],[52,88]],[[92,88],[32,8]],[[12,88],[72,8]]],
+   fact:'3 sides, 3 corners. The strongest shape in nature!',
+   symNote:'A triangle has 3 lines of symmetry.'},
+  {n:'Square',   sides:4,corners:4,color:'#16A34A',
+   svg:'<rect x="10" y="10" width="84" height="84" rx="2" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/>',
+   pts:[[10,10],[94,10],[94,94],[10,94]],
+   symLines:[[[52,10],[52,94]],[[10,52],[94,52]],[[10,10],[94,94]],[[94,10],[10,94]]],
+   fact:'4 equal sides, 4 right-angle corners.',
+   symNote:'A square has 4 lines of symmetry.'},
+  {n:'Rectangle',sides:4,corners:4,color:'#9333EA',
+   svg:'<rect x="6" y="26" width="92" height="52" rx="2" fill="#F3E8FF" stroke="#9333EA" stroke-width="2.5"/>',
+   pts:[[6,26],[98,26],[98,78],[6,78]],
+   symLines:[[[52,26],[52,78]],[[6,52],[98,52]]],
+   fact:'2 long sides, 2 short sides. 4 right-angle corners.',
+   symNote:'A rectangle has 2 lines of symmetry.'},
+  {n:'Pentagon', sides:5,corners:5,color:'#E11D48',
+   svg:'<polygon points="52,8 88,34 76,76 28,76 16,34" fill="#FFE4E6" stroke="#E11D48" stroke-width="2.5"/>',
+   pts:[[52,8],[88,34],[76,76],[28,76],[16,34]],
+   symLines:[[[52,8],[52,76]],[[88,34],[28,76]],[[76,76],[16,34]],[[28,76],[88,34]],[[16,34],[76,76]]],
+   fact:'"Penta" means 5 in Greek!',
+   symNote:'A regular pentagon has 5 lines of symmetry.'},
+  {n:'Hexagon',  sides:6,corners:6,color:'#EA580C',
+   svg:'<polygon points="52,8 88,30 88,74 52,96 16,74 16,30" fill="#FFEDD5" stroke="#EA580C" stroke-width="2.5"/>',
+   pts:[[52,8],[88,30],[88,74],[52,96],[16,74],[16,30]],
+   symLines:[[[52,8],[52,96]],[[88,30],[16,74]],[[88,74],[16,30]],[[10,52],[94,52]],[[28,8],[76,96]],[[76,8],[28,96]]],
+   fact:'"Hex" means 6. Honeybees build hexagons!',
+   symNote:'A hexagon has 6 lines of symmetry.'}
 ];
 
-var curSh=null,spinDeg=0;
+var curSh=null, spinDeg=0, showSym=false;
+
+/* ── BUILD SVG with numbered sides, corner dots, optional symmetry lines ── */
+function buildInfoSVG(s, withSym){
+  var out = '<svg viewBox="0 0 104 104" width="120" height="120" style="flex-shrink:0">';
+  out += s.svg;
+  // Corner dots
+  if(s.pts && s.pts.length){
+    s.pts.forEach(function(p,i){
+      out += '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="5" fill="'+s.color+'" stroke="#fff" stroke-width="1.5"/>';
+    });
+    // Side midpoint labels (numbered)
+    s.pts.forEach(function(p,i){
+      var next = s.pts[(i+1)%s.pts.length];
+      var mx=(p[0]+next[0])/2, my=(p[1]+next[1])/2;
+      // nudge label outward from centroid
+      var cx=52,cy=52;
+      var dx=mx-cx, dy=my-cy;
+      var len=Math.sqrt(dx*dx+dy*dy)||1;
+      var lx=mx+dx/len*11, ly=my+dy/len*11;
+      out += '<circle cx="'+mx.toFixed(1)+'" cy="'+my.toFixed(1)+'" r="8" fill="'+s.color+'dd"/>';
+      out += '<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="middle" dominant-baseline="middle" '
+           + 'font-size="9" font-weight="800" fill="#fff" font-family="DM Mono,monospace">'+(i+1)+'</text>';
+    });
+  }
+  // Symmetry lines
+  if(withSym && s.symLines && s.symLines.length){
+    s.symLines.forEach(function(l){
+      out += '<line x1="'+l[0][0]+'" y1="'+l[0][1]+'" x2="'+l[1][0]+'" y2="'+l[1][1]
+           + '" stroke="#a78bfa" stroke-width="2" stroke-dasharray="5,3" opacity="0.9"/>';
+    });
+  }
+  out += '</svg>';
+  return out;
+}
+
+/* ── GRID ── */
 function bldGrid(){
-  var g=document.getElementById('sGrid');g.innerHTML='';
+  var g=document.getElementById('sGrid'); g.innerHTML='';
   SH.forEach(function(s,i){
     var d=document.createElement('div');
-    d.style.cssText='background:#fff;border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer;border:2px solid rgba(0,0,0,.06);transition:.18s;user-select:none';
-    d.innerHTML='<svg viewBox="0 0 104 104" width="56" height="56">'+s.svg+'</svg><div style="font-size:11px;font-weight:800;margin-top:4px">'+s.n+'</div>';
+    d.className='shape-tile';
+    d.innerHTML='<svg viewBox="0 0 104 104" width="54" height="54">'+s.svg+'</svg>'
+               +'<div class="stile-name">'+s.n+'</div>';
     d.onmouseenter=function(){if(curSh!==i)d.style.borderColor=s.color};
     d.onmouseleave=function(){if(curSh!==i)d.style.borderColor='rgba(0,0,0,.06)'};
-    d.onclick=function(){curSh=i;spinDeg=0;shInfo(i);document.querySelectorAll('#sGrid>div').forEach(function(x,j){x.style.borderColor=j===i?SH[j].color:'rgba(0,0,0,.06)';x.style.background=j===i?'rgba(0,0,0,.02)':'#fff'})};
+    d.onclick=function(){
+      curSh=i; spinDeg=0; showSym=false; shInfo(i);
+      document.querySelectorAll('.shape-tile').forEach(function(x,j){
+        x.style.borderColor=j===i?SH[j].color:'rgba(0,0,0,.06)';
+        x.style.background=j===i?SH[j].color+'15':'#fff';
+      });
+    };
     g.appendChild(d);
   });
 }
+
+/* ── SHAPE INFO: sides visual + corners + symmetry toggle ── */
 function shInfo(i){
   var s=SH[i];
-  document.getElementById('shapeInfo').innerHTML='<div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">'
-    +'<svg viewBox="0 0 104 104" width="80" height="80" style="flex-shrink:0">'+s.svg+'</svg>'
-    +'<div style="flex:1"><div style="font-family:Grandstander,cursive;font-size:20px;font-weight:900;color:'+s.color+';margin-bottom:8px">'+s.n+'</div>'
-    +(s.sides===0
-      ?'<div style="font-size:13px;font-weight:600;line-height:1.7;color:var(--ink)">No sides · No corners · Infinite symmetry</div>'
-      :'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">'
-        +'<span style="background:'+s.color+'22;color:'+s.color+';font-family:Grandstander,cursive;font-size:13px;font-weight:800;padding:3px 12px;border-radius:20px">'+s.sides+' sides</span>'
-        +'<span style="background:'+s.color+'22;color:'+s.color+';font-family:Grandstander,cursive;font-size:13px;font-weight:800;padding:3px 12px;border-radius:20px">'+s.corners+' corners</span>'
-        +'<span style="background:'+s.color+'22;color:'+s.color+';font-family:Grandstander,cursive;font-size:13px;font-weight:800;padding:3px 12px;border-radius:20px">'+s.sym+' symmetry</span>'
-      +'</div>')
-    +'<div style="font-size:13px;font-weight:600;color:var(--ink2);line-height:1.7">'+s.fact+'</div></div></div>';
-  document.getElementById('spinArea').style.display='';rndrSpin();
+  showSym=false;
+  renderShapeInfo(i);
+  // Spin zone
+  document.getElementById('spinArea').style.display='';
+  document.getElementById('spinSVG').innerHTML='<svg viewBox="0 0 104 104" width="100" height="100" style="transform:rotate('+spinDeg+'deg);transition:.3s">'+s.svg+'</svg>';
+  document.getElementById('spinNote').textContent=s.sides===0?'A circle always looks the same — rotate it all you want!':'Rotate it. Does it look exactly the same from every angle?';
 }
-function rndrSpin(){if(curSh===null)return;var s=SH[curSh];document.getElementById('spinSVG').innerHTML='<svg viewBox="0 0 104 104" width="110" height="110" style="transform:rotate('+spinDeg+'deg);transition:.3s">'+s.svg+'</svg>';document.getElementById('spinNote').textContent=s.sides===0?'A circle always looks the same — rotate it all you want!':'Rotate it. Does it look exactly the same from every angle?'}
+
+function renderShapeInfo(i){
+  var s=SH[i];
+  var siSVG=buildInfoSVG(s, showSym);
+  var badges='';
+  if(s.sides===0){
+    badges='<div class="si-badge" style="background:#EFF6FF;color:#3B82F6">No sides</div>'
+          +'<div class="si-badge" style="background:#EFF6FF;color:#3B82F6">No corners</div>'
+          +'<div class="si-badge" style="background:#F3E8FF;color:#9333EA">∞ symmetry</div>';
+  } else {
+    // Sides badge
+    badges+='<div class="si-badge" style="background:'+s.color+'18;color:'+s.color+'">'+s.sides+' sides</div>';
+    // Angles badge (same count as sides for regular polygons)
+    badges+='<div class="si-badge" style="background:'+s.color+'18;color:'+s.color+'">'+s.corners+' angles</div>';
+    // Symmetry badge
+    badges+='<div class="si-badge" style="background:#F3E8FF;color:#7C3AED">'+(s.symLines?s.symLines.length:0)+' sym. lines</div>';
+  }
+
+  var symBtn='';
+  if(s.symLines && s.symLines.length){
+    symBtn='<button class="sym-toggle-btn '+(showSym?'on':'')+'" onclick="toggleSym('+i+')">'
+          +(showSym?'🔮 Hide symmetry':'🔮 Show symmetry')+'</button>'
+          +(showSym?'<div class="sym-note">'+s.symNote+'</div>':'');
+  } else if(s.sides===0){
+    symBtn='<div class="sym-note" style="margin-top:6px">♾️ '+s.symNote+'</div>';
+  }
+
+  document.getElementById('shapeInfo').innerHTML=
+    '<div class="si-layout">'
+    +siSVG
+    +'<div class="si-right">'
+      +'<div class="si-name" style="color:'+s.color+'">'+s.n+'</div>'
+      +'<div class="si-badges">'+badges+'</div>'
+      +symBtn
+      +'<div class="si-fact">'+s.fact+'</div>'
+    +'</div></div>';
+}
+
+function toggleSym(i){
+  showSym=!showSym;
+  renderShapeInfo(i);
+  // Update spin area SVG if visible
+  if(curSh!==null){
+    var s=SH[curSh];
+    document.getElementById('spinSVG').innerHTML='<svg viewBox="0 0 104 104" width="100" height="100" style="transform:rotate('+spinDeg+'deg);transition:.3s">'+s.svg+'</svg>';
+  }
+}
+
+function rndrSpin(){
+  if(curSh===null)return;
+  var s=SH[curSh];
+  document.getElementById('spinSVG').innerHTML='<svg viewBox="0 0 104 104" width="100" height="100" style="transform:rotate('+spinDeg+'deg);transition:.3s">'+s.svg+'</svg>';
+}
 function spin(d){if(d===0)spinDeg=0;else spinDeg+=d;rndrSpin()}
 bldGrid();
 
 /* ── BUILD SLATE ── */
-var DRAW_SHAPES=[
-  {id:'circle',label:'Circle'},{id:'triangle',label:'Triangle'},
-  {id:'square',label:'Square'},{id:'rectangle',label:'Rectangle'},
-  {id:'pentagon',label:'Pentagon'},{id:'hexagon',label:'Hexagon'}
-];
+var DRAW_SHAPES=[{id:'circle',label:'●'},{id:'triangle',label:'▲'},{id:'square',label:'■'},{id:'rectangle',label:'▬'},{id:'pentagon',label:'⬠'},{id:'hexagon',label:'⬡'}];
 var DRAW_COLORS=['#7C3AED','#3B82F6','#16A34A','#EA580C','#E11D48','#CA8A04','#DB2777','#374151'];
-var PROMPTS=[
-  '🏠 Try making a house!','🚀 Can you build a rocket?',
-  '🌲 Draw a tree with shapes!','⛵ Make a boat!','🦋 Try a butterfly!'
-];
+var PROMPTS=['🏠 Try making a house!','🚀 Can you build a rocket?','🌲 Draw a tree with shapes!','⛵ Make a boat!','🦋 Try a butterfly!'];
 var curDrawShape='rectangle',curColor='#7C3AED',isDrawing=false;
 var sx=0,sy=0,ex=0,ey=0,slateShapes=[];
 
 function bldBuildUI(){
-  /* prompts */
   var pp=document.getElementById('prompts');pp.innerHTML='';
-  PROMPTS.forEach(function(p){
-    var b=document.createElement('div');
-    b.style.cssText='font-size:12px;font-weight:700;color:var(--ac);background:rgba(124,58,237,.07);border-radius:8px;padding:5px 10px;cursor:default';
-    b.textContent=p;pp.appendChild(b);
-  });
-  /* shape picker */
+  PROMPTS.forEach(function(p){var b=document.createElement('div');b.className='prompt-chip';b.textContent=p;pp.appendChild(b)});
   var dp=document.getElementById('drawPicker');dp.innerHTML='';
   DRAW_SHAPES.forEach(function(ds){
-    var b=document.createElement('button');b.id='dpick_'+ds.id;
-    b.style.cssText='font-family:Grandstander,cursive;font-size:12px;font-weight:800;padding:6px 12px;border-radius:10px;border:2px solid rgba(0,0,0,.1);background:'+(curDrawShape===ds.id?'var(--ac)':'#fff')+';cursor:pointer;transition:.15s;color:'+(curDrawShape===ds.id?'#fff':'var(--ink2)');
-    b.textContent=ds.label;
-    b.onclick=function(){curDrawShape=ds.id;document.querySelectorAll('[id^=dpick_]').forEach(function(x){x.style.background='#fff';x.style.color='var(--ink2)';x.style.borderColor='rgba(0,0,0,.1)'});b.style.background='var(--ac)';b.style.color='#fff';b.style.borderColor='var(--ac)'};
+    var b=document.createElement('button');b.className='pick-btn'+(curDrawShape===ds.id?' on':'');
+    b.textContent=ds.label; b.title=ds.id.charAt(0).toUpperCase()+ds.id.slice(1);
+    b.onclick=function(){curDrawShape=ds.id;bldBuildUI()};
     dp.appendChild(b);
   });
-  /* colour picker */
   var cp=document.getElementById('colorPicker');cp.innerHTML='';
   DRAW_COLORS.forEach(function(col){
     var c=document.createElement('div');
-    c.style.cssText='width:24px;height:24px;border-radius:50%;background:'+col+';cursor:pointer;transition:.12s;border:3px solid '+(col===curColor?'#1A2E2E':'transparent')+';box-shadow:0 1px 4px rgba(0,0,0,.15)';
-    c.onclick=function(){curColor=col;document.querySelectorAll('#colorPicker div').forEach(function(x){x.style.borderColor='transparent'});c.style.borderColor='#1A2E2E'};
+    c.className='color-swatch'+(col===curColor?' on':'');
+    c.style.background=col;
+    c.onclick=function(){curColor=col;bldBuildUI()};
     cp.appendChild(c);
   });
 }
 bldBuildUI();
 
-var cvs=document.getElementById('drawSlate');
-var ctx=cvs.getContext('2d');
-
-function clearSlate(){slateShapes=[];redraw();document.getElementById('slateProp').style.display='none'}
-function undoLast(){slateShapes.pop();redraw()}
-
+var cvs=document.getElementById('drawSlate'),ctx=cvs.getContext('2d');
+function clearSlate(){slateShapes=[];redraw();document.getElementById('slateProp').textContent=''}
+function undoLast(){if(slateShapes.length)slateShapes.pop();redraw()}
 function redraw(){
   ctx.clearRect(0,0,cvs.width,cvs.height);
-  /* dot grid */
-  ctx.fillStyle='rgba(99,102,241,.1)';
+  ctx.fillStyle='rgba(99,102,241,.08)';
   for(var gx=20;gx<cvs.width;gx+=20)for(var gy=20;gy<cvs.height;gy+=20){ctx.beginPath();ctx.arc(gx,gy,1.5,0,Math.PI*2);ctx.fill()}
   slateShapes.forEach(function(sh){paintShape(ctx,sh)});
   if(isDrawing)paintShape(ctx,{type:curDrawShape,x1:sx,y1:sy,x2:ex,y2:ey,color:curColor});
 }
-
 function paintShape(ctx,sh){
-  ctx.save();
-  ctx.strokeStyle=sh.color;ctx.fillStyle=sh.color+'40';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.save();ctx.strokeStyle=sh.color;ctx.fillStyle=sh.color+'40';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';
   var x=Math.min(sh.x1,sh.x2),y=Math.min(sh.y1,sh.y2),w=Math.abs(sh.x2-sh.x1),h=Math.abs(sh.y2-sh.y1);
-  var cx=(sh.x1+sh.x2)/2,cy=(sh.y1+sh.y2)/2;var r=Math.sqrt(w*w+h*h)/2;
+  var cx2=(sh.x1+sh.x2)/2,cy2=(sh.y1+sh.y2)/2;var r=Math.sqrt(w*w+h*h)/2;
   ctx.beginPath();
-  if(sh.type==='circle'){ctx.arc(cx,cy,Math.max(r,4),0,Math.PI*2)}
-  else if(sh.type==='triangle'){ctx.moveTo(cx,y);ctx.lineTo(x+w,y+h);ctx.lineTo(x,y+h);ctx.closePath()}
-  else if(sh.type==='square'){var s=Math.max(Math.min(w,h),8);ctx.rect(cx-s/2,cy-s/2,s,s)}
+  if(sh.type==='circle'){ctx.arc(cx2,cy2,Math.max(r,4),0,Math.PI*2)}
+  else if(sh.type==='triangle'){ctx.moveTo(cx2,y);ctx.lineTo(x+w,y+h);ctx.lineTo(x,y+h);ctx.closePath()}
+  else if(sh.type==='square'){var sq=Math.max(Math.min(w,h),8);ctx.rect(cx2-sq/2,cy2-sq/2,sq,sq)}
   else if(sh.type==='rectangle'){ctx.rect(x,y,Math.max(w,8),Math.max(h,8))}
-  else if(sh.type==='pentagon'){var pr=Math.max(r,10);for(var i=0;i<5;i++){var a=(i*72-90)*Math.PI/180;if(i===0)ctx.moveTo(cx+pr*Math.cos(a),cy+pr*Math.sin(a));else ctx.lineTo(cx+pr*Math.cos(a),cy+pr*Math.sin(a))}ctx.closePath()}
-  else if(sh.type==='hexagon'){var hr=Math.max(r,10);for(var i=0;i<6;i++){var a=(i*60-30)*Math.PI/180;if(i===0)ctx.moveTo(cx+hr*Math.cos(a),cy+hr*Math.sin(a));else ctx.lineTo(cx+hr*Math.cos(a),cy+hr*Math.sin(a))}ctx.closePath()}
+  else if(sh.type==='pentagon'){var pr=Math.max(r,10);for(var pi=0;pi<5;pi++){var pa=(pi*72-90)*Math.PI/180;if(pi===0)ctx.moveTo(cx2+pr*Math.cos(pa),cy2+pr*Math.sin(pa));else ctx.lineTo(cx2+pr*Math.cos(pa),cy2+pr*Math.sin(pa))}ctx.closePath()}
+  else if(sh.type==='hexagon'){var hr=Math.max(r,10);for(var hi=0;hi<6;hi++){var ha=(hi*60-30)*Math.PI/180;if(hi===0)ctx.moveTo(cx2+hr*Math.cos(ha),cy2+hr*Math.sin(ha));else ctx.lineTo(cx2+hr*Math.cos(ha),cy2+hr*Math.sin(ha))}ctx.closePath()}
   ctx.fill();ctx.stroke();ctx.restore();
 }
-
-function getXY(e){
-  var r=cvs.getBoundingClientRect();var scX=cvs.width/r.width,scY=cvs.height/r.height;
-  var src=e.touches?e.touches[0]:e;
-  return{x:(src.clientX-r.left)*scX,y:(src.clientY-r.top)*scY};
-}
-function showProp(type){
-  var ds=DRAW_SHAPES.find(function(d){return d.id===type});if(!ds)return;
-  var s=SH.find(function(x){return x.n.toLowerCase()===type});
-  var prop=document.getElementById('slateProp');prop.style.display='block';
-  prop.textContent=ds.label+(s&&s.sides===0?' — 0 sides, 0 corners':s?' — '+s.sides+' sides, '+s.corners+' corners':'');
-}
+function getXY(e){var r=cvs.getBoundingClientRect();var sc=cvs.width/r.width;var src=e.touches?e.touches[0]:e;return{x:(src.clientX-r.left)*sc,y:(src.clientY-r.top)*sc}}
 cvs.addEventListener('mousedown',function(e){e.preventDefault();isDrawing=true;var p=getXY(e);sx=p.x;sy=p.y;ex=sx;ey=sy});
 cvs.addEventListener('mousemove',function(e){if(!isDrawing)return;var p=getXY(e);ex=p.x;ey=p.y;redraw()});
-cvs.addEventListener('mouseup',function(e){if(!isDrawing)return;isDrawing=false;var p=getXY(e);ex=p.x;ey=p.y;if(Math.abs(ex-sx)>6||Math.abs(ey-sy)>6)slateShapes.push({type:curDrawShape,x1:sx,y1:sy,x2:ex,y2:ey,color:curColor});redraw();showProp(curDrawShape)});
+cvs.addEventListener('mouseup',function(e){if(!isDrawing)return;isDrawing=false;var p=getXY(e);ex=p.x;ey=p.y;if(Math.abs(ex-sx)>5||Math.abs(ey-sy)>5)slateShapes.push({type:curDrawShape,x1:sx,y1:sy,x2:ex,y2:ey,color:curColor});redraw();document.getElementById('slateProp').textContent=curDrawShape.charAt(0).toUpperCase()+curDrawShape.slice(1)+' added!'});
 cvs.addEventListener('touchstart',function(e){e.preventDefault();isDrawing=true;var p=getXY(e);sx=p.x;sy=p.y;ex=sx;ey=sy},{passive:false});
 cvs.addEventListener('touchmove',function(e){e.preventDefault();if(!isDrawing)return;var p=getXY(e);ex=p.x;ey=p.y;redraw()},{passive:false});
-cvs.addEventListener('touchend',function(e){e.preventDefault();if(!isDrawing)return;isDrawing=false;if(Math.abs(ex-sx)>6||Math.abs(ey-sy)>6)slateShapes.push({type:curDrawShape,x1:sx,y1:sy,x2:ex,y2:ey,color:curColor});redraw();showProp(curDrawShape)},{passive:false});
+cvs.addEventListener('touchend',function(e){e.preventDefault();if(!isDrawing)return;isDrawing=false;if(Math.abs(ex-sx)>5||Math.abs(ey-sy)>5)slateShapes.push({type:curDrawShape,x1:sx,y1:sy,x2:ex,y2:ey,color:curColor});redraw()},{passive:false});
 redraw();
 
-/* ── PRACTICE: name shape ── */
+/* ── PRACTICE ── */
 function pool4(ans,lo,hi){var s=new Set([ans]);var i=0;while(s.size<4&&i<50){i++;var w=ans+Math.round(Math.random()*8-4);if(w>=lo&&w<=hi&&w!==ans)s.add(w)}return[...s].sort(function(){return Math.random()-.5})}
 function mkOpts(cid,items,correct,fid){var c=document.getElementById(cid);c.innerHTML='';items.forEach(function(n){var b=document.createElement('button');b.className='opt';b.textContent=n;b.onclick=function(){c.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById(fid);if(String(n)===String(correct)){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}else{b.classList.add('no');fb.textContent='That is a '+correct+'.';fb.style.color='var(--no)';c.querySelectorAll('.opt').forEach(function(x){if(String(x.textContent)===String(correct))x.classList.add('ok')})}};c.appendChild(b)})}
 
 function nwSQ(){
   var s=SH[Math.floor(Math.random()*SH.length)];
   document.getElementById('sF').textContent='';
-  document.getElementById('sQ').innerHTML='<svg viewBox="0 0 104 104" width="140" height="140">'+s.svg+'</svg>';
+  document.getElementById('sO').innerHTML=buildInfoSVG(s,false);
   var pool=[s.n];var others=SH.filter(function(x){return x.n!==s.n}).slice().sort(function(){return Math.random()-.5});
   while(pool.length<4&&others.length)pool.push(others.pop().n);
   pool.sort(function(){return Math.random()-.5});
-  var op=document.getElementById('sO');op.innerHTML='';
-  pool.forEach(function(nm){
-    var b=document.createElement('button');b.className='opt';b.style.fontSize='14px';b.style.minWidth='auto';b.style.padding='0 14px';b.textContent=nm;
-    b.onclick=function(){op.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById('sF');
-      if(nm===s.n){b.classList.add('ok');fb.textContent='🎉 Yes! That is a '+s.n+'!';fb.style.color='var(--ok)'}
-      else{b.classList.add('no');fb.textContent='That is a '+s.n+'.';fb.style.color='var(--no)';op.querySelectorAll('.opt').forEach(function(x){if(x.textContent===s.n)x.classList.add('ok')})}};
-    op.appendChild(b);
-  });
+  mkOpts('sQ',pool,s.n,'sF');
 }
 nwSQ();
 
-/* ── PRACTICE: pattern ── */
 var PATS=[['🔵','🔺','🔵','🔺','🔵','🔺'],['🟩','🟩','🔴','🟩','🟩','🔴'],['🔺','🟩','🔵','🔺','🟩','🔵'],['🟠','🟠','🔵','🟠','🟠','🔵'],['🌟','🔵','🌟','🔵','🌟','🔵'],['🟣','🔺','🔺','🟣','🔺','🔺']];
 var PAL4=['🔵','🔺','🟩','🟪','🔴','🟠','🌟','🟣'];
 var pAns='';
@@ -319,20 +521,21 @@ function nwPQ(){
   var seq=PATS[Math.floor(Math.random()*PATS.length)];pAns=seq[5];
   document.getElementById('patF').textContent='';
   var sc=document.getElementById('patSeq');sc.innerHTML='';
-  seq.slice(0,5).forEach(function(e){var s=document.createElement('span');s.textContent=e;sc.appendChild(s)});
-  var q=document.createElement('span');q.textContent='❓';sc.appendChild(q);
+  seq.slice(0,5).forEach(function(e){var s=document.createElement('span');s.style.fontSize='26px';s.textContent=e;sc.appendChild(s)});
+  var q=document.createElement('span');q.style.cssText='font-size:26px;font-weight:900;color:var(--orange)';q.textContent='❓';sc.appendChild(q);
   var wrong=PAL4.filter(function(e){return e!==pAns}).sort(function(){return Math.random()-.5}).slice(0,3);
   var ch=[pAns].concat(wrong).sort(function(){return Math.random()-.5});
   var op=document.getElementById('patO');op.innerHTML='';
   ch.forEach(function(em){
-    var b=document.createElement('button');b.className='opt';b.style.fontSize='26px';b.textContent=em;
-    b.onclick=function(){op.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById('patF');
-      if(em===pAns){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}
-      else{b.classList.add('no');fb.textContent='The pattern continues with '+pAns+'.';fb.style.color='var(--no)';op.querySelectorAll('.opt').forEach(function(x){if(x.textContent===pAns)x.classList.add('ok')})}};
+    var b=document.createElement('button');b.className='opt';b.style.fontSize='24px';b.textContent=em;
+    b.onclick=function(){op.querySelectorAll('.opt').forEach(function(x){x.onclick=null});var fb=document.getElementById('patF');if(em===pAns){b.classList.add('ok');fb.textContent='🎉 Correct!';fb.style.color='var(--ok)'}else{b.classList.add('no');fb.textContent='The pattern continues with '+pAns+'.';fb.style.color='var(--no)';op.querySelectorAll('.opt').forEach(function(x){if(x.textContent===pAns)x.classList.add('ok')})}};
     op.appendChild(b);
   });
 }
 nwPQ();
+
+sw('learn');
+
 </script>
 </body>
 </html>
